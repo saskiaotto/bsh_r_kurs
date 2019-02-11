@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>BSH-Kurs Grundlagen der Datenanalyse mit R</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="css/style_site.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://marinedatascience.co">
+        <img id="mds_logo" alt="" src="img_site/mds_logo_notext_small.png" width="30" height="30" >
+        MDS
+      </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">
+            <span class="fa fa-home"></span>
+              Datenanalyse mit R
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <span class="fa fa-graduation-cap"></span>
+              Lektionen
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">Programmierung in R</li>
+            <li class="dropdown-item">
+              <a href="Lektion01_Einführung_in_R.html ">1-Einführung in R und RStudio</a>
+            </li>
+            <li class="dropdown-item">
+              <a href="Lektion02_Datenstrukturen.html">2-Datenstrukturen</a>
+            </li>
+            <li class="dropdown-item">
+              <a href="Lektion03_Operatoren.html">3-Arbeitsbereich und Operatoren</a>
+            </li>
+            <li class="dropdown-item">
+              <a href="Lektion04_Data_wrangling_Import.html">4-Data wrangling-1.Import</a>
+            </li>
+            <li class="dropdown-item">
+              <a href="Lektion05_Data_wrangling_tidyr.html">5-Data wrangling-2.Tidy Daten</a>
+            </li>
+            <li class="dropdown-header">Datenexploration &amp; visualization</li>
+            <li class="dropdown-item">
+              <a href="Lektion06_Data_wrangling_Transformation.html">6-Data wrangling-3.Transformation</a>
+            </li>
+            <li class="dropdown-item">
+              <a href="Lektion07_Einführung_Visualisierung_1.html">7-Visualisierung in R</a>
+            </li>
+            <li class="dropdown-header">Statistische Modellierung</li>
+            <li class="dropdown-item">
+              <a href="Lektion08_Einfache_Tests_in_R.html">8-Einfache Tests in R</a>
+            </li>
+            <li class="dropdown-item">
+              <a href="Lektion09_Stat_Modellierung_1.html">9-Statistische Modellierung 1</a>
+            </li>
+            <li class="dropdown-item">
+              <a href="Lektion10_Stat_Modellierung_2.html">10-Statistische Modellierung 2</a>
+            </li>
+            <li class="dropdown-item">
+              <a href="Lektion11_Stat_Interpolation_undKarten.html ">11-Interpolation und Karten</a>
+            </li>
+            <li class="dropdown-header">Kommunikation</li>
+            <li class="dropdown-item">
+              <a href="Lektion12_Stat_Rmarkdown.html">12-Rmarkdown</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">slides, keyboard shortcuts:</li>
+            <li class="dropdown-header">o: outline</li>
+            <li class="dropdown-header">w: widescreen on/off</li>
+            <li class="dropdown-header">f: fullscreen on/off</li>
+            <li class="dropdown-header">ctrl +/ ctrl -: zoom in/out</li>
+            <li class="dropdown-header">p: presenter mode with additional info (NOT in Safari)</li>
+          </ul>
+        </li>
+        <li>
+          <a href="practicals.html">
+            <span class="fa fa-gear"></span>
+              Praktisches
+          </a>
+        </li>
+        <li>
+          <a href="misc.html">
+            <span class="ion ion-wrench"></span>
+              Weiterführende Literatur
+          </a>
+        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+          <li>
+        <a href="mailto:saskia.otto@uni-hamburg.de">
+          <span class="fa fa-send"></span>
+            Kontakt
+        </a>
+      </li>
+    </ul>
+   </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">BSH-Kurs ‘Grundlagen der Datenanalyse mit R’</h1>
+<h4 class="date"><em>11.-13. Feb. 2019</em></h4>
+
+</div>
+
+
+<!-- <a href="https://marinedatascience.de" style="height:100px; width:auto; top: 0; left:0;"> -->
+<!--   <img src="img_site/mds_logo_text_144dpi.svg" alt="MDS Logo"> -->
+<!-- </a> -->
+<div id="kurs-ubersicht" class="section level2">
+<h2>Kurs-Übersicht</h2>
+<p><strong>Willkommen beim 3-tätigen Einstiegskurs zur Datenanalyse mit R!</strong></p>
+<p>In den nächsten 3 Tagen werden wir uns mit folgenden Themen beschäftigen:</p>
+<ul>
+<li>Einstieg in R, Überblick über die Funktionen (Basis und Zusatzpakete) und die Benutzeroberfläche</li>
+<li>Datenstrukturen und Datentypen</li>
+<li>Datenimport und -export</li>
+<li>Datenmanagement und Bereinigen von Daten</li>
+<li>Grafische Auswertungen mit R</li>
+<li>Grundlegende statistische Analysen (Signifikanztest, Regressionsanalysen)</li>
+<li>Darüber hinaus werden wir die Interpolation von Messdaten und Erstellung von Karten anreißen</li>
+</ul>
+<p><br> <img src="img_site/Tidyverse_packages.png" alt="Tidyverse packages" style="float:left;clear:left;width:650px;border:0;padding:0% 4% 0% 0%;"/></p>
+<p><br> <br></p>
+<p>Dieser Kurs basiert stark auf dem sog. <strong>tidyverse framework</strong> und stellt verschiedene R Pakete vor, die einem R Syntax Dialekt folgen welche den Datenimport, die Datenverarbeitung und die Datenvisualiserung vereinfacht.</p>
+<p><br> <br></p>
+</div>
+<div id="lektionen" class="section level2">
+<h2>Lektionen</h2>
+<p>Es gibt insgesamt 12 Lektionen die die Themenkomplexe <strong>Programmierung in R</strong>, <strong>Datenexploration &amp; Visualisierung</strong> and <strong>Statistische Modellierung</strong> umfassen. Jede der Lektione enthält interaktive Quizze und Aufgaben (die nur im Webbrowser funktionieren, nicht in den PDF Dateien).</p>
+<p>Folgende keyboard shortcuts können genutzt werden während der einzelnen Lektionspräsentationen:</p>
+<p><kbd>o</kbd> führt in den Übersichtsmodus overview mode</p>
+<p><kbd>w</kbd> führt in den widescreen Modus</p>
+<p><kbd>f</kbd> führt in ddie Vollansicht</p>
+<p><kbd>h</kbd> ermöglicht den code highlight Modus</p>
+<p><kbd>control</kbd> (Windows) or <kbd>command</kbd> (Mac) AND <kbd>+</kbd> / <kbd>-</kbd> um rein oder raus zu zoomen<br></p>
+<p><kbd>p</kbd> öffnet ein Dialogfenster für weitere Informationen (funktioniert nicht in Safari).</p>
+<p>Mit <kbd>esc</kbd> wird der aktuelle Modus beendet.</p>
+<p><br> <br></p>
+</div>
+<div id="zeitplan" class="section level2">
+<h2>Zeitplan:</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th>Zeit</th>
+<th>Thema</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mo</td>
+<td>9:00-9:30</td>
+<td>Kursablauf, Vorstellungsrunde vorstellung</td>
+</tr>
+<tr class="even">
+<td>Mo</td>
+<td>9:30-10:30</td>
+<td>Lektion 1 - Einführung in R, R Studio und R Skripte</td>
+</tr>
+<tr class="odd">
+<td>Mo</td>
+<td>10:30-10:45</td>
+<td>Pause</td>
+</tr>
+<tr class="even">
+<td>Mo</td>
+<td>10:45-12:30</td>
+<td>Lektion 2 - Datenstrukturen</td>
+</tr>
+<tr class="odd">
+<td>Mo</td>
+<td>12:30-13:30</td>
+<td>Mittagspause</td>
+</tr>
+<tr class="even">
+<td>Mo</td>
+<td>13:30-15:00</td>
+<td>Lektion 3 - Arbeitsbereich und Operatoren</td>
+</tr>
+<tr class="odd">
+<td>Mo</td>
+<td>15:00-15:15</td>
+<td>Pause</td>
+</tr>
+<tr class="even">
+<td>Mo</td>
+<td>15:15-17:00</td>
+<td>Lektion 4 - Data wrangling - 1.Import</td>
+</tr>
+<tr class="odd">
+<td>Di</td>
+<td>9:00-10:30</td>
+<td>Lektion 5 - Data wrangling - 2.Tidy Daten</td>
+</tr>
+<tr class="even">
+<td>Di</td>
+<td>10:30-10:45</td>
+<td>Pause</td>
+</tr>
+<tr class="odd">
+<td>Di</td>
+<td>10:45-12:30</td>
+<td>Lektion 6 - Data wrangling - 3.Transformation</td>
+</tr>
+<tr class="even">
+<td>Di</td>
+<td>12:30-13:30</td>
+<td>Mittagspause</td>
+</tr>
+<tr class="odd">
+<td>Di</td>
+<td>13:30-15:00</td>
+<td>Lektion 7 - Visualisierung in R</td>
+</tr>
+<tr class="even">
+<td>Di</td>
+<td>15:00-15:15</td>
+<td>Pause</td>
+</tr>
+<tr class="odd">
+<td>Di</td>
+<td>15:15-17:00</td>
+<td>Fortsetzung Lektion 7</td>
+</tr>
+<tr class="even">
+<td>Di</td>
+<td>16:00-17:00</td>
+<td>Lektion 8 - Einfache Tests in R</td>
+</tr>
+<tr class="odd">
+<td>Mi</td>
+<td>9:00-10:30</td>
+<td>Lektion 9 - Statistische Modellierung 1</td>
+</tr>
+<tr class="even">
+<td>Mi</td>
+<td>10:30-10:45</td>
+<td>Pause</td>
+</tr>
+<tr class="odd">
+<td>Mi</td>
+<td>10:45-12:00</td>
+<td>Lektion 10 - Statistische Modellierung 2</td>
+</tr>
+<tr class="even">
+<td>Mi</td>
+<td>12:30-13:30</td>
+<td>Mittagspause</td>
+</tr>
+<tr class="odd">
+<td>Mi</td>
+<td>13:30-15:00</td>
+<td>Lektion 11 - Interpolation und Karten</td>
+</tr>
+<tr class="even">
+<td>Mi</td>
+<td>15:00-15:15</td>
+<td>Pause</td>
+</tr>
+<tr class="odd">
+<td>Mi</td>
+<td>15:15-16:00</td>
+<td>Lektion 12 - Rmarkdown zur Kommunikation</td>
+</tr>
+<tr class="even">
+<td>Mi</td>
+<td>16:00-17:00</td>
+<td>Kursabschluss</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
