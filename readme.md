@@ -1,4 +1,4 @@
-# Test
+# Datenanalyse mit R Grundlagenkurs
+## BSH, 11 - 13 Feb 2019
 
-test text
-now connected with home machine
+Dieser Kurs hat seine eigene Website: https://saskiaotto.github.io./rsh_k_kurs
