@@ -1,0 +1,61 @@
+name: MARinE Data Science | Data Analysis with R
+output_dir: "../docs"
+exclude: ["*.html", "*.pdf", "libs"]
+
+navbar:
+  title:
+  type: inverse
+  href: https://www.marinedatascience.co
+  left:
+  - text: Datenanalyse mit R
+    icon: fa-home
+    href: index.html
+  - text: Lektionen
+    icon: fa-graduation-cap
+    menu:
+    - text: Programmierung in R
+    - text: 1-Einführung in R und RStudio
+      href: Lektion01_Einführung_in_R.html
+    - text: 2-Datenstrukturen
+      href: Lektion02_Datenstrukturen.html
+    - text: 3-Arbeitsbereich und Operatoren
+      href: Lektion03_Operatoren.html  
+    - text: 4-Data wrangling-1.Import
+      href: Lektion04_Data_wrangling_Import.html  
+    - text: 5-Data wrangling-2.Tidy Daten
+      href: Lektion05_Data_wrangling_tidyr.html  
+    - text: 6-Data wrangling-3.Transformation
+      href: Lektion06_Data_wrangling_Transformation.html  
+    - text: 7-Visualisierung in R
+      href: Lektion07_Einführung_Visualisierung_1.html  
+    - text: 8-Einfache Tests in R
+      href: Lektion08_Einfache_Tests_in_R.html  
+    - text: 9-Statistische Modellierung 1
+      href: Lektion09_Stat_Modellierung_1.html  
+    - text: 10-Statistische Modellierung 2
+      href: Lektion10_Stat_Modellierung_2.html  
+    - text: 11-Interpolation und Karten
+      href: Lektion11_Stat_Interpolation_undKarten.html  
+    - text: 12-Rmarkdown zur Kommunikation 
+      href: Lektion12_Stat_Rmarkdown.html    
+    - text: "---------"
+    - text: "slides, keyboard shortcuts:"
+    - text: "o: outline"
+    - text: "w: widescreen on/off"
+    - text: "f: fullscreen on/off"
+    - text: "ctrl +/ ctrl -: zoom in/out"
+    - text: "p: presenter mode with additional info (NOT in Safari)"
+  - text: Praktisches
+    icon: fa-gear
+    href: practicals.html
+  - text: Weiterführende Literatur
+    icon: fa-newspaper
+    href: misc.html
+  - text: Kontakt
+    icon: fa-send
+    href: mailto:saskia.otto@uni-hamburg.de
+output:
+  html_document:
+    highlight: default
+    css: css/style_site.css
+

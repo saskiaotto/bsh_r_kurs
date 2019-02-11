@@ -1,0 +1,49 @@
+---
+title: "Praktisches"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Lektionen
+
+Die Lektionen werden hier in Kürze als PDF zum Download verfügbar stehen
+
+<br>
+
+# Datensätze
+
+Alle Datensätze können hier als ZIP Datei runtergeladen werden:
+<a href="data_site/bsh_r_kurs_daten.zip">Download ZIP Datei [589 KB]</a>
+
+<br>
+
+# R Pakete
+
+Folgende Pakete sollten auf dem Rechner installiert sein für die Übungen und Demonstrationen in den Lektionen:
+
+- [tidyverse](https://www.rdocumentation.org/packages/tidyverse/versions/1.2.1) (includes already: ggplot2, tibble, tidyr, readr, dplyr, stringr, forcats, purrr)
+- [lubridate](https://www.rdocumentation.org/packages/lubridate/versions/1.7.0)
+- [modelr](https://www.rdocumentation.org/packages/modelr/versions/0.1.1)
+- [RColorBrewer](https://www.rdocumentation.org/packages/RColorBrewer/versions/1.1-2)
+- [ggmap](https://www.rdocumentation.org/packages/ggmap/versions/2.6.1)
+- [grid](https://www.rdocumentation.org/packages/grid/versions/3.4.3)
+- [gridExtra](https://www.rdocumentation.org/packages/gridExtra/versions/2.3)
+- [gstat](https://www.rdocumentation.org/packages/gstat/versions/1.1-6)
+- [sp](https://www.rdocumentation.org/packages/sp/versions/1.3-1)
+- [MBA](https://www.rdocumentation.org/packages/MBA/versions/0.0-8)
+- [oce](https://www.rdocumentation.org/packages/oce/versions/1.0-1)
+- [maptools](https://www.rdocumentation.org/packages/maptools/versions/0.9-4)
+- [OceanView](https://www.rdocumentation.org/packages/OceanView/versions/1.0.4)
+- [oceanmap](https://www.rdocumentation.org/packages/oceanmap/versions/0.1.0)
+
+
+
+All diese Pakekte sind auf der [CRAN](https://cran.r-project.org) verfügbar und können direkt aus R oder RStudio heraus installiert werden mit der Funktion `install.packages()`:
+```{r, eval=FALSE}
+install.packages(c("tidyverse", "lubridate", "modelr","RColorBrewer", "ggmap", "grid", "gridExtra", "gstat",
+"sp", "MBA", "oce", "maptools", "OceanView","oceanmap"), dependencies = TRUE)
+```
+
