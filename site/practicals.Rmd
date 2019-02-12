@@ -20,6 +20,14 @@ Alle Datensätze können hier als ZIP Datei runtergeladen werden:
 
 <br>
 
+# Infomaterial
+
+Eine Auswahl an cheat sheets und kurzen Funktionszusammfassung anderer Autoren findet hier:
+<a href="data_site/cheatsheets.zip">ZIP Datei [10.9 MB]</a>
+
+<br>
+
+
 # R Pakete
 
 Folgende Pakete sollten auf dem Rechner installiert sein für die Übungen und Demonstrationen in den Lektionen:
