@@ -13,10 +13,10 @@ knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=FALSE, dev
 
 #### Allgemein
 
-- [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) → gut gemachte Übersichten der Funktionen in den tidyverse Paketen auf 1-2 Seiten
+- [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) → gut gemachte Übersichten der Funktionen in den tidyverse Paketen (auf 1-2 Seiten zusammengefasst)
 - [R-bloggers](https://www.r-bloggers.com/) → ein Blog mit Neuigkeiten zu den aktuellsten R Entwicklungen und Paketen sowie versch. online tutorials. 
-- [DataCamp](https://www.datacamp.com/) → diese Website bietet mittlerweile eine große Bandbreite an R Kursen an, teilweise umsonst sind.
-- Um mehr zu R Operatoren zu lesen ist folgendes online tutorial pauf der tutorialcart website empfehlenswert:[ https://www.tutorialkart.com/r-tutorial/r-operators/](https://www.tutorialkart.com/r-tutorial/r-operators/).
+- [DataCamp](https://www.datacamp.com/) → diese Website bietet mittlerweile eine große Bandbreite an R Kursen an, die teilweise umsonst sind.
+- Um mehr zu R Operatoren zu lesen ist folgendes Online tutorial empfehlenswert:[ https://www.tutorialkart.com/r-tutorial/r-operators/](https://www.tutorialkart.com/r-tutorial/r-operators/).
 
 
 #### Visualisierung (v.a. zu ggplot2)
@@ -29,20 +29,20 @@ knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=FALSE, dev
 - Für einen Überblick an den ggplot theme Komponenten empfiehlt sich [Winston Chang's wiki](https://github.com/wch/ggplot2/wiki/New-theme-system) auf github
 - Überblick zu ggplot2 Erweiterungen: http://www.ggplot2-exts.org
 - Farbschemen zu ColorBrewer insbesondere für Karten: http://colorbrewer2.org
-- Das Stowers Institut hat im [ColorChart pdf](http://research.stowers.org/mcm/efg/R/Color/Chart/ColorChart.pdf) eine Liste aller möglichen Farben zusammengestellt, welche sehr hilfreich ist.
+- Das Stowers Institut hat im [ColorChart pdf](http://research.stowers.org/mcm/efg/R/Color/Chart/ColorChart.pdf) eine Liste aller möglichen Farben zusammengestellt, welches sehr hilfreich ist.
 
 
 #### R Markdown
 
-- Für einen Einstige siehe auch: [R Markdown Webside](https://rmarkdown.rstudio.com) von R Studio.
+- Für einen Einstieg siehe auch: [R Markdown Webside](https://rmarkdown.rstudio.com) von R Studio.
 - R Studio [reference guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
-- Gutes online tutorials: [R for fledglings](https://www.uvm.edu/rsenr/vtcfwru/R/fledglings/08_Markdown.html)
+- Gutes online tutorial: [R for fledglings](https://www.uvm.edu/rsenr/vtcfwru/R/fledglings/08_Markdown.html)
 
 
 
 #### R Kurs auf Deutsch
 
-Im Rahmen des [Lehrlabors](https://www.universitaetskolleg.uni-hamburg.de/universitaetskolleg-2-0/lehrlabor.html) der Universität Hamburg gibt es das Projekt [R-lab 2.0](https://rlab.blogs.uni-hamburg.de) welches Online Tutorials zu R in den Umweltwissenschaften mittels *swirl* anbietet. Auch das Institut für Marine Ökosystem und Fischereiwissenschaft ist an dem Projekt beteiligt und ein ähnlicher Datenanalyse R Kurs wie dieser wurde auch als *swirl* Kurs von mir umgesetzt (dieser allerdings auf Englisch).
+Im Rahmen des [Lehrlabors](https://www.universitaetskolleg.uni-hamburg.de/universitaetskolleg-2-0/lehrlabor.html) der Universität Hamburg gibt es das Projekt [R-lab 2.0](https://rlab.blogs.uni-hamburg.de) welches online tutorials zu R in den Umweltwissenschaften mittels *swirl* anbietet. Auch das Institut für Marine Ökosystem und Fischereiwissenschaft ist an dem Projekt beteiligt und ein ähnlicher Datenanalyse R Kurs wie dieser wurde auch als *swirl* Kurs von mir umgesetzt (dieser allerdings auf Englisch).
 
 <br>
 <br>

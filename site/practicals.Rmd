@@ -9,14 +9,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Lektionen
 
-Die Lektionen werden hier in Kürze als PDF zum Download verfügbar stehen
+Die Lektionen werden hier in Kürze als PDF zum Download verfügbar stehen.
 
 <br>
 
 # Datensätze
 
 Alle Datensätze können hier als ZIP Datei runtergeladen werden:
-<a href="data_site/bsh_r_kurs_daten.zip">Download ZIP Datei [589 KB]</a>
+<a href="data_site/bsh_r_kurs_daten.zip">ZIP Datei [589 KB]</a>
 
 <br>
 
@@ -24,7 +24,7 @@ Alle Datensätze können hier als ZIP Datei runtergeladen werden:
 
 Folgende Pakete sollten auf dem Rechner installiert sein für die Übungen und Demonstrationen in den Lektionen:
 
-- [tidyverse](https://www.rdocumentation.org/packages/tidyverse/versions/1.2.1) (includes already: ggplot2, tibble, tidyr, readr, dplyr, stringr, forcats, purrr)
+- [tidyverse](https://www.rdocumentation.org/packages/tidyverse/versions/1.2.1) (enthält bereits: ggplot2, tibble, tidyr, readr, dplyr, stringr, forcats, purrr)
 - [lubridate](https://www.rdocumentation.org/packages/lubridate/versions/1.7.0)
 - [modelr](https://www.rdocumentation.org/packages/modelr/versions/0.1.1)
 - [RColorBrewer](https://www.rdocumentation.org/packages/RColorBrewer/versions/1.1-2)
@@ -41,7 +41,7 @@ Folgende Pakete sollten auf dem Rechner installiert sein für die Übungen und D
 
 
 
-All diese Pakekte sind auf der [CRAN](https://cran.r-project.org) verfügbar und können direkt aus R oder RStudio heraus installiert werden mit der Funktion `install.packages()`:
+All diese Pakekte sind auf der [CRAN](https://cran.r-project.org) verfügbar und können direkt aus R oder RStudio heraus mit der Funktion `install.packages()` installiert werden:
 ```{r, eval=FALSE}
 install.packages(c("tidyverse", "lubridate", "modelr","RColorBrewer", "ggmap", "grid", "gridExtra", "gstat",
 "sp", "MBA", "oce", "maptools", "OceanView","oceanmap"), dependencies = TRUE)

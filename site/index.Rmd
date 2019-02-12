@@ -46,11 +46,11 @@ Es gibt insgesamt 12 Lektionen die die Themenkomplexe **Programmierung in R**, *
 Folgende keyboard shortcuts können genutzt werden während der einzelnen Lektionspräsentationen:
 
 
-<kbd>o</kbd> führt in den Übersichtsmodus overview mode
+<kbd>o</kbd> führt in den Übersichtsmodus
 
 <kbd>w</kbd> führt in den widescreen Modus
 
-<kbd>f</kbd> führt in ddie Vollansicht
+<kbd>f</kbd> startet die Vollansicht
 
 <kbd>h</kbd> ermöglicht den code highlight Modus
 
@@ -68,7 +68,7 @@ Mit <kbd>esc</kbd> wird der aktuelle Modus beendet.
 
 Tag | Zeit        | Thema
 ----|-------------|-----------
-Mo  | 9:00-9:30   | Kursablauf, Vorstellungsrunde vorstellung
+Mo  | 9:00-9:30   | Kursablauf, Vorstellungsrunde 
 Mo  | 9:30-10:30  | Lektion 1 - Einführung in R, R Studio und R Skripte
 Mo  | 10:30-10:45 | Pause
 Mo  | 10:45-12:30 | Lektion 2 - Datenstrukturen
