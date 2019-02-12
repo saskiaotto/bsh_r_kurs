@@ -28,6 +28,8 @@ navbar:
       href: Lektion06_Data_wrangling_Transformation.html  
     - text: 7-Visualisierung in R
       href: Lektion07_Einführung_Visualisierung_1.html  
+    - text: 7b-Vertiefung in ggplot2
+      href: Lektion07b_Einführung_Visualisierung_2.html  
     - text: 8-Einfache Tests in R
       href: Lektion08_Einfache_Tests_in_R.html  
     - text: 9-Statistische Modellierung 1
