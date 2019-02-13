@@ -34,7 +34,7 @@ navbar:
       href: Lektion08_Einfache_Tests_in_R.html  
     - text: 9-Statistische Modellierung
       href: Lektion09_Stat_Modellierung_1.html  
-    - text: 10-Rmarkdown zur Kommunikation 
+    - text: 10-R Markdown zur Kommunikation 
       href: Lektion10_Rmarkdown.html    
     - text: "---------"
     - text: "slides, keyboard shortcuts:"
