@@ -35,7 +35,7 @@ navbar:
     - text: 9-Statistische Modellierung
       href: Lektion09_Stat_Modellierung_1.html  
     - text: 10-Rmarkdown zur Kommunikation 
-      href: Lektion10_Stat_Rmarkdown.html    
+      href: Lektion10_Rmarkdown.html    
     - text: "---------"
     - text: "slides, keyboard shortcuts:"
     - text: "o: outline"
