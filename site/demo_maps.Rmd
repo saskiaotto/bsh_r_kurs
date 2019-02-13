@@ -1,0 +1,295 @@
+---
+title: "Kartenerstellung mit interpolierten Werte"
+subtitle: "Eine einfache Lösung in ggplot, sp und gstat"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=TRUE, dev.args=list(bg="transparent"),
+fig.retina = 2, fig.path = "demo_map_plotting_files/")
+```
+
+## Bodentemperatur im Februar
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(lubridate)
+hydro <- read_csv("data_site/1111473b.csv")
+names(hydro) <- c("cruise", "station", "type", "date_time", 
+  "lat", "long", "depth", "pres", "temp", "psal", "doxy")
+hydro$month <- month(hydro$date_time)
+hydro$fmonth <- as.factor(hydro$month)
+hydro$day <- day(hydro$date_time)
+hydro$depth <- as.integer(hydro$depth)
+
+temp_bot <- filter(hydro, depth > 30, 
+  pres >= (depth-10), month == 2) %>%
+  group_by(lat, long, date_time, month, fmonth) %>%
+  summarise(temp = mean(temp, na.rm = TRUE)) %>%
+  ungroup() %>%
+  select(lat, long, fmonth, temp)
+```
+
+
+**Wie kommt man von hier ....**
+
+
+```{r, echo=FALSE}
+
+ggplot(temp_bot, aes(long, lat, col = temp)) +
+  geom_point()
+```
+
+
+**... nach hier?**
+
+```{r, echo=FALSE}
+dat <- temp_bot
+dat$x <- dat$long
+dat$y <- dat$lat
+x_min <- min(dat$x) - min(dat$x) / 100
+x_max <- max(dat$x) + max(dat$x) / 100
+y_min <- min(dat$y) - min(dat$y) / 100
+y_max <- max(dat$y) + max(dat$y) / 100
+# expand points to grid
+grd <- expand.grid(
+  x = seq(from = x_min, to = x_max, by = .1),
+  y = seq(from = y_min, to = y_max, by = .1))
+
+# The following converts dat into a SpatialPointsDataFrame object (sp package)
+sp::coordinates(grd) <- ~x + y
+sp::gridded(grd) <- TRUE
+
+# The following converts dat into a SpatialPointsDataFrame object (sp package)
+# needed for the idw function
+sp::coordinates(dat) = ~x + y
+### Interpolate surface and fix the output:
+idw_mod <- gstat::idw(formula = temp ~ 1, locations = dat,
+  newdata = grd)  # apply idw model for the data
+
+idw_mod <- as.data.frame(idw_mod)  
+
+# Now the map
+world <- map_data("world")
+p1 <- ggplot() + geom_tile(data = idw_mod, aes(x,y,
+  fill = round(var1.pred, 0))) +
+  scale_fill_gradient2(midpoint = 6,
+    low = "blue", mid = "yellow", high = "red", 
+    na.value = "black", limits = c(0, 12)) +
+  geom_point(data = temp_bot, aes(x = long, y = lat), shape = 21,
+    colour = "grey80", alpha = 0.4) +
+  geom_polygon(data = world, aes(x = long, y = lat, group = group),
+    fill = "white", colour = "black") +
+  coord_map("ortho",  xlim = c(12, 28), ylim = c(54,66)) +
+  labs(fill = "Temp (°C)", y = "Längengrad", x = "Breitengrad",
+    title = "Interpolierte Bodentemperatur im Februar 2015") +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+p1
+```
+
+## Datenvorbereitung
+
+Bevor die Karten erstellt werden können, müssen wir die Daten (der `hydro` Datensatz) erstmal entsprechend tidy machen und transformieren:
+
+```{r}
+library(tidyverse)
+library(lubridate)
+# Import
+hydro <- read_csv("data_site/1111473b.csv")
+names(hydro) <- c("cruise", "station", "type", "date_time", 
+  "lat", "long", "depth", "pres", "temp", "psal", "doxy")
+hydro$month <- month(hydro$date_time)
+hydro$day <- day(hydro$date_time)
+hydro$depth <- as.integer(hydro$depth)
+
+temp_bot <- hydro %>%
+  # erst filtern wir die Bodenwerte und Februar
+  filter(depth > 30, 
+  pres >= (depth-10), month == 2) %>%
+  # zuerst müssen die Temperaturwerte der einzelnen Tiefenstufen
+  # pro Sampling gemittelt werden (daher die Gruppierung)
+  group_by(lat, long, date_time) %>%
+  summarise(temp = mean(temp, na.rm = TRUE)) %>%
+  # die Gruppe brauchen wir nicht mehr
+  ungroup() %>%
+  # wir nehmen nur die Dateien die wirs später brauchen
+  select(lat, long, temp)
+```
+
+
+
+## Schritt 1: Wir erstellen die Grundkarte
+
+ggplot stellt eine Funktion zur Verfügung, mit der Kartendaten aus dem package [maps](https://www.rdocumentation.org/packages/maps) in dataframes umgewandelt werden, die dann plottbar sind mit ggplot2:
+
+```{r}
+world <- map_data("world")
+head(world)
+```
+
+Um die Daten nun zu plotten braucht man das geom `geom_path`
+
+```{r}
+worldmap <- ggplot(world, aes(x = long, y = lat)) +
+  geom_path(aes(group = group))
+worldmap
+```
+
+Wenn Land und Wasser deutlicher von einander abgrenzen werden sollen, kann man statt `geom_path` auch Polygone verwenden, die farblich anders **gefüllt** sind:
+
+```{r}
+worldmap <- ggplot(world, aes(x = long, y = lat)) +
+  geom_polygon(aes(group = group), fill = "black")
+worldmap
+```
+
+Nun können wir uns in die Ostsee reinzoomen mit der Koordinatensystem-Funktion `coord_map`
+
+```{r}
+baltic <- worldmap + coord_map("ortho", xlim = c(10, 30), ylim = c(52,66))
+baltic
+```
+
+
+## Schritt 2: Datenpunkte hinzufügen
+Da das Objekt `baltic` ein ggplot Objekt ist, lässt sich dieses um weitere Elemente - wie unsere Datenpunkte der Bodentemperatur einfach dazufügen. Allerdings müssen wir darauf achten, dass wir auf einen anderen Datensatz verweisen!
+
+```{r}
+p1 <- baltic + 
+  geom_point(data = temp_bot, aes(x = long, y = lat, color = temp))
+p1
+```
+
+
+Da die Farbskale nicht besonders günstig ist, werden wir diese mit einer der `scale_` Funtionen verändern:
+
+```{r}
+p1 <- p1 + 
+    scale_color_gradient2(midpoint = 6,
+    low = "blue", mid = "yellow", high = "red", 
+    na.value = "green", limits = c(0, 12)) 
+p1
+```
+
+
+## Schritt 3: Karte aufhübschen
+
+Beschriftungen kann man mit `labs()` verändern:
+
+```{r}
+p1 <- p1 + labs(fill = "Temp (°C)", y = "Längengrad", x = "Breitengrad",
+    title = "Interpolierte Bodentemperatur im Februar 2015")
+```
+
+
+Wenn wir die graue Hintergrundfläche farblich ändern wollen, könnten wir das mit dem *panel.background* Argument in `theme()` machen (siehe weiter unten), oder wir verwenden wir einfach mal ein anderes Layout mit einem der vordefinierten `theme_() Funktionen:
+
+```{r}
+p1 <- p1 + theme_bw() # (bw steht für black-and-white)
+```
+
+Das grid lässt sich mich mit der allgemeinen `theme()` Funktion verändern:
+
+```{r}
+p1 <- p1 + theme(panel.grid = element_blank())
+p1
+```
+
+`theme()` bietet eine sehr große Auswahl an Argumenten bzw. Elementeinstellungen, von denen *panel.grid* (also das Gitter im panel selbst) nur eines ist. Hier lohnt sich ein Blick in die Hilfe mit `?theme` auf jedenfall. 
+Mit der `element_blank()` geben wir an, dass das grid Element leer bleiben soll.
+
+Ich habe bewusst diesen Schritt nach dem Layout-Schritt mit `theme_bw()` gemacht, weil diese Funktion alle manuellen theme Veränderungen überschreibt und dann wäre unser grid wieder sichtbar.
+
+
+ 
+
+## Schritt 4: Die Interpolation der Temperatur
+
+Für die nächsten Schritte reicht uns ggplot2 allerdings nicht aus und wür müssen auf 2 weitere wichtige Pakete zurückgreifen
+
+- [gstat](https://www.rdocumentation.org/packages/gstat/versions/1.1-6): dies ist ein Paket für **räumliche und räumlich-zeitliche geostatische Modellierung und Simulation** und enthält diverse kriging und Variogram Funktionen.
+- [sp](https://www.rdocumentation.org/packages/sp/versions/1.3-1): sp ist ein Paket welches Klassen und Methoden für räumliche Daten definiert und stellt Funktionen zum Plotten von Karten, räumliche Auswahlmethoden, etc. Es gibt mittlereweile eine aktualiserte Fassung, die einige Veränderungen aufweist und noch besser mit ggplot funktioneren soll: [sf](https://www.rdocumentation.org/packages/sf/versions/0.7-2). Noch sind aber nicht alle Pakete für räumliche Analysen auf sf angepasst.
+
+###  Die Interpolation der Temperatur
+
+Zuerst erstellen wir ein gleichmäßiges Grid was für für die Vorhersage der Temperatur brauchen und dann wandeln wir dieses grid und unsere Originaldaten in sog. SpatialPointsDataFrame Objekte, welche für die Interpolationsfunktion ebraucht wird.
+Anstelle des Ladens beider Pakete werden ich beim Aufruf der Funktion, das entsprechende Paket mitangeben, um Euch zu zeigen welche Funktion aus welchem Paket ist.
+
+```{r}
+# Um den Code allgemeiner zu halten werden die Daten unter anderem Namen gespeichert:
+dat <- temp_bot
+
+# Für die weiteren Schritten müssen die Koordinaten als 'x' und 'y' bezeichnet werden
+dat$x <- dat$long
+dat$y <- dat$lat
+
+# Den räumliche Ausdehnung der Stationen ermitteln (mit etwas Rand)
+x_min <- min(dat$x) - min(dat$x) / 100
+x_max <- max(dat$x) + max(dat$x) / 100
+y_min <- min(dat$y) - min(dat$y) / 100
+y_max <- max(dat$y) + max(dat$y) / 100
+
+# Ein gleichmäßiges grid erstellen, basierend auf meinem definierten Samplinggebiet
+grd <- expand.grid(
+  x = seq(from = x_min, to = x_max, by = .1),
+  y = seq(from = y_min, to = y_max, by = .1))
+
+# The following converts dat into a SpatialPointsDataFrame object (sp package)
+# Die folgende Funktion aus sp wandelt den grid in das sog. SpatialPointsDataFrame 
+# Objekt (wird bereits automatisch abgespeichert!!) 
+sp::coordinates(grd) <- ~x + y
+sp::gridded(grd) <- TRUE
+# Das gleiche nun mit den Originaldaten
+sp::coordinates(dat) = ~x + y
+```
+
+Nun kommt die Interpolation mit der `ìdw()` Funktion aus dem gstat Paket. Diese Funktion erstellt das Modell und berechnet die vohergesagten Werte gleich mit.
+```{r}
+idw_mod <- gstat::idw(formula = temp ~ 1, locations = dat,
+  newdata = grd)  # apply idw model for the data
+class(idw_mod)
+```
+Wir Ihr sehen könnt, ist das entstandene Objekt kein SpatialPointsDataFrame mehr sondern ein SpatialPixelsDataFrame. Dieses muss zurück in einen data frame umgewandelt werden, damit wir es mit ggplot plotten können:
+
+```{r}
+idw_mod <- as.data.frame(idw_mod)  
+```
+
+
+### Einbau der Interpolation in die Karte
+
+Die Reihenfolge des Codes aus Schritt 1-3 muss leicht umgeändert werden, wenn die Interpolierten mit geplottet werden sollen:
+
+- Zuerst wird ein leerer Plot erstellt, da wir in den geom_ Funktionen auf unterschiedliche Dateätze greifen will. 
+- Zu diesem Plot kommt dann ein `geom_tile` layer für die interpolierten Werte. 
+- Aschl. ändern wir die Farbskala der tiles bzw. Kacheln. Wichtig ist dass wir das *fill* aesthetic jetzt ansprechen wollen und nicht mehr *color* - daher nehmen wir auch `scale_fill_gradient2` anstelle von `scale_color_gradient2`. 
+- Anschl. fügen wir die Weltkarte ein (als `geom_polygon`) und ändern das Koordinatensystem wie vorhin. 
+- Die Punkte könnte man wenn als hohle Kreise mit einzeichnen 
+- Zum Abschluss wird das Layout geändert:
+
+```{r}
+p2 <- ggplot() + geom_tile(data = idw_mod, aes(x,y,
+  fill = round(var1.pred, 0))) +
+  scale_fill_gradient2(midpoint = 6,
+    low = "blue", mid = "yellow", high = "red", 
+    na.value = "black", limits = c(0, 12)) +
+  geom_point(data = temp_bot, aes(x = long, y = lat), shape = 21,
+    colour = "grey80", alpha = 0.4) +
+  geom_polygon(data = world, aes(x = long, y = lat, group = group),
+    fill = "black", colour = "black") +
+  coord_map("ortho",  xlim = c(12, 28), ylim = c(54,66)) +
+  labs(fill = "Temp (°C)", y = "Längengrad", x = "Breitengrad",
+    title = "Interpolierte Bodentemperatur im Februar 2015") +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+p2
+```
+
+
+Et voila, fertig ist die Karte!

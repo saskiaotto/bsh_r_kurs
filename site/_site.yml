@@ -32,14 +32,10 @@ navbar:
       href: Lektion07b_Einführung_Visualisierung_2.html  
     - text: 8-Einfache Tests in R
       href: Lektion08_Einfache_Tests_in_R.html  
-    - text: 9-Statistische Modellierung 1
+    - text: 9-Statistische Modellierung
       href: Lektion09_Stat_Modellierung_1.html  
-    - text: 10-Statistische Modellierung 2
-      href: Lektion10_Stat_Modellierung_2.html  
-    - text: 11-Interpolation und Karten
-      href: Lektion11_Stat_Interpolation_undKarten.html  
-    - text: 12-Rmarkdown zur Kommunikation 
-      href: Lektion12_Stat_Rmarkdown.html    
+    - text: 10-Rmarkdown zur Kommunikation 
+      href: Lektion10_Stat_Rmarkdown.html    
     - text: "---------"
     - text: "slides, keyboard shortcuts:"
     - text: "o: outline"
@@ -53,6 +49,9 @@ navbar:
   - text: Weiterführende Literatur
     icon: fa-newspaper
     href: misc.html
+  - text: Demo
+    icon: ion-wrench
+    href: demo_maps.html
   - text: Kontakt
     icon: fa-send
     href: mailto:saskia.otto@uni-hamburg.de

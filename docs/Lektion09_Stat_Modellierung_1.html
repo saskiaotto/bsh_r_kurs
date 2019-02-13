@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Datenanalyse mit R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Datenanalyse mit R">
+  <meta name="author" content="Saskia A. Otto">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!-- the following meta tag added by me (SAO) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css"
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/sao_theme.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="./assets/css/box_styles.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="./assets/css/style.css"></link>
+
+
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script>
+  <script data-main="libraries/frameworks/io2012/js/slides"
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+
+    <!-- LOGO SLIDE -->
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='500px' src="assets/img/BigLogo_MDS.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <!-- <aside class="gdbar">
+    <img src="assets/img/mds_logo_text_144dpi.png">
+  </aside>-->
+  <div style="position: absolute; left: 50px; top: 50px; z-index:100">
+      <img src = "assets/img/mds_logo_text_144dpi.png" height="100px" width="100px">
+  </div>
+  <hgroup class="auto-fadein">
+    <h1>Datenanalyse mit R</h1>
+    <h2>9 - Statistische Modellierung 1</h2>
+    <p>Saskia A. Otto<br/>BSH 11/02 - 13/02 2019</p>
+  </hgroup>
+  <article></article>
+</slide>
+
+
+    <!-- SLIDES -->
+    <slide class="segue" style="background:#1874CD;">
+  <hgroup>
+    <h1>Statistical modelling</h1>
+  </hgroup>
+  <article>
+    <p><img src="img/Data_science_1c.png" style="height:150px;border:0;position: absolute; left: 900px; top: 50px" </img> </p>
+
+  </article>
+</slide>
+<slide class="" id="slide-2">
+  <hgroup>
+    <h2>Linear statistical models</h2>
+  </hgroup>
+  <article class = 'flexbox vcenter'>
+    <ul>
+<li><strong>term „linear“ refers to the combination of parameters, not the shape of the distribution</strong>: linear combination of series of parameters (regression slope, intercept) where no parameter appears as an exponent or is divided / multiplied by another parameter</li>
+</ul>
+
+<p>\[Y_{i} = \alpha + \beta_{1}*X_{i} + \beta_{2}*X_{i}^2 + \epsilon_{i}\]
+\[Y_{i} = \alpha + \beta_{1}*(X_{i}*W_{i}) + \epsilon_{i}\]
+\[Y_{i} = \alpha + \beta_{1}*log(X_{i}) + \epsilon_{i}\]
+\[Y_{i} = \alpha + \beta_{1}*exp(X_{i}) + \epsilon_{i}\]
+\[Y_{i} = \alpha + \beta_{1}*sin(X_{i}) + \epsilon_{i}\]</p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Why use linear models?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Linear regression technique <strong>well established</strong> framework</li>
+<li>Advantages:
+
+<ul>
+<li>easy to <strong>interpret</strong> (constant and coefficients), </li>
+<li>easy to <strong>grasp</strong> (also interactions, multiple X)</li>
+<li>coefficients can be <strong>further used</strong> in e.g. numerical models</li>
+<li>easy to <strong>extend</strong>: link functions, fixed and random effects, correlation structures,…  → GLM, GLMM</li>
+</ul></li>
+<li>BUT:
+
+<ul>
+<li>Dynamics not always linear → transformations do not always help or would lead to information loss</li>
+</ul></li>
+</ul>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Linear models in</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/R_logo.png" style="height:75px;border:0;position: absolute; left: 400px; top: 40px" </img> </p>
+
+<ul>
+<li>use function <code>lm(formula, data)</code></li>
+<li>to look at the estimated coefficients: <code>coef(model)</code></li>
+<li>to look at the complete numerical output: <code>summary(model)</code></li>
+</ul>
+
+<p><img src="img/lm_formula.png" style="width:600px;border:0;position: absolute; left: 250px; top:300px" </img> </p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Defining the model family in the R formula</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Focus on normal linear regression models</h3>
+
+<ol>
+<li>Straight line: <code>lm(formula = Y ~ X, data)</code></li>
+<li>Relationship with polynomials: 
+
+<ul>
+<li>Quadratic: <code>lm(Y ~ poly(X,2), data)</code> or <code>~ splines::ns(X, 2)</code> </li>
+<li>Cubic: <code>lm(Y ~ poly(X,3), data)</code> or <code>~ splines::ns(X, 3)</code> </li>
+</ul></li>
+<li>Linearize the relationship:
+
+<ul>
+<li><code>lm(formula = log(Y) ~ log(X), data)</code></li>
+</ul></li>
+<li>Several explanatory variables with and without interactions
+<code>lm(formula = Y ~ X1 + X2 + X1:X2, data)</code> or as shortcut:
+<code>lm(formula = Y ~ X1*X2, data)</code></li>
+</ol>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Overview of model formulae in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <div class="img-with-text" style="position: absolute; left: 200px; top: 100px; z-index:100">
+    <img src="img/Model_formulae_Crawley2007.png" alt="Formulae in R" width=700px height=600px />
+ <p><span class="source-img" style = "float:right">source: 
+    <a href='http://onlinelibrary.wiley.com/book/10.1002/9780470515075' title=''>Crawley (2007)</a></span></p>
+</div>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="segue" style="background:#EEC900;">
+  <hgroup>
+    <h1>Your turn...</h1>
+  </hgroup>
+  <article>
+    
+  </article>
+</slide>
+<slide class="" id="slide-8">
+<hgroup>
+  <h1>Exercise 1:  Bottom temperature as a function of latitude</h1>
+</hgroup>
+<article data-timings="">
+  <div style="background-color:#F5F5F5; text-align:left; vertical-align: middle; padding:20px 47px;">
+    <p>Apply the following data manipulation to your tidy (!) <code>hydro</code> dataset</p>
+
+<pre><code class="r">hydro$fmonth &lt;- as.factor(hydro$month)
+
+temp_bot &lt;- filter(hydro, depth &gt; 30, pres &gt;= (depth-10)) %&gt;%
+  group_by(lat, long, date_time, month, fmonth) %&gt;%
+  summarise(temp = mean(temp, na.rm = TRUE)) %&gt;%
+  ungroup() %&gt;%
+  select(lat, long, fmonth, temp) %&gt;%
+  drop_na(temp)
+</code></pre>
+
+  </div>
+  <footer>
+    <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+      <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+    </div>
+    <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+      <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+      font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+    </div>
+  </footer>
+</article>
+<!-- Presenter Notes -->
+</slide>
+
+<style>
+#slide-8 {
+  background-color: #EEC900;
+}
+</style>
+<slide class="" id="slide-9">
+<hgroup>
+  <h1>Exercise 1:  Bottom temperature as a function of latitude</h1>
+</hgroup>
+<article data-timings="">
+  <div style="background-color:#F5F5F5; text-align:left; vertical-align: middle; padding:20px 47px;">
+    <p>Apply a linear regression model to the <code>temp_bot</code> dataset and model temp as a function of lat (<code>temp ~ lat</code>)</p>
+
+<p>Look at the summary of your model:</p>
+
+<ul>
+<li>What would be the corresponding linear regression equation?</li>
+<li>How broad is the standard error?</li>
+<li>How much of the total variability is explained by latitude?</li>
+<li>Is the effect significant?</li>
+</ul>
+
+  </div>
+  <footer>
+    <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+      <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+    </div>
+    <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+      <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+      font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+    </div>
+  </footer>
+</article>
+<!-- Presenter Notes -->
+</slide>
+
+<style>
+#slide-9 {
+  background-color: #EEC900;
+}
+</style>
+<slide class="" id="slide-10" style="background:#CD2626;">
+  <hgroup>
+    <h1>Solution 1: <code>Iris</code> length relationship</h1>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mod &lt;- lm(temp ~ lat, data = temp_bot); coef(mod)
+</code></pre>
+
+<pre><code class="no-highlight">## (Intercept)         lat 
+##  30.5075586  -0.4234427
+</code></pre>
+
+<pre><code class="r">summary(mod)
+</code></pre>
+
+<pre><code class="no-highlight">## 
+## Call:
+## lm(formula = temp ~ lat, data = temp_bot)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.7229 -1.2015 -0.2699  0.5637  8.4918 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 30.50756    1.19926   25.44   &lt;2e-16 ***
+## lat         -0.42344    0.02093  -20.24   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.133 on 1529 degrees of freedom
+## Multiple R-squared:  0.2112, Adjusted R-squared:  0.2107 
+## F-statistic: 409.5 on 1 and 1529 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="segue" style="background:#1874CD;">
+  <hgroup>
+    <h1>Visualizing simple linear regression models</h1>
+  </hgroup>
+  <article>
+    <p><img src="img/Data_science_1c.png" style="height:150px;border:0;position: absolute; left: 900px; top: 50px" </img> </p>
+
+  </article>
+</slide>
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Visualize your linear regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Use <code>geom_smooth</code> and set the method argument to the name of the modelling function (in this case &#39;lm&#39;). If you don&#39;t want to show the standard error additionally, set <code>se = FALSE</code>:</p>
+
+<div style='float:left;width:48%;'>
+  <pre><code class="r">p &lt;- ggplot(temp_bot, 
+  aes(x = lat, y = temp)) +
+  geom_point() + 
+  geom_smooth(method = &quot;lm&quot;,
+    se = FALSE)
+p
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="lecture09_plotting_files/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="504" /></p>
+
+</div>
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Visualize your linear regression manually</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>You can also <strong>compute the predicted values</strong> for your model using</p>
+
+<ul>
+<li><code>predict(model)</code> from the <em>stats</em> package → simply returns a vector, which you can add to your data using the <code>dplyr::mutate()</code> function</li>
+<li><code>add_predictions(data, model, var = &quot;pred&quot;)</code> from the <em>modelr</em> package (in tidyverse) →  adds the variable &#39;pred&#39; containing the predicted values to your data frame; useful when piping operations!</li>
+</ul>
+
+<div style='float:left;width:48%;'>
+  <pre><code class="r">mutate(temp_bot, pred = predict(mod)) %&gt;%
+ggplot(aes(x = lat)) +
+  geom_point(aes(y = temp)) + 
+  geom_line(aes(y = pred)) 
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="lecture09_plotting_files/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="432" style="display: block; margin: auto auto auto 0;" /></p>
+
+</div>
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-14" style="background:;">
+  <article data-timings="">
+    <p>Predictions are best visualised from an <strong>evenly spaced grid</strong> of <em>X</em> values that covers the region where your data lies </p>
+
+<ul>
+<li>Add to the argument <code>newdata</code> in a data frame that includes an even X sequence:
+
+<ul>
+<li><code>predict(model, newdata = data.frame(x = seq(min(x), max(x), 0.1)))</code> </li>
+</ul></li>
+<li><strong>Easier</strong>: Use the function <code>modelr::data_grid(data, X1, X2)</code> to generate this grid. If you have more than one X, it finds the unique variables and then generates all combinations.
+
+<ul>
+<li>Use this grid then for the <code>add_predictions(data = grid, model)</code> function</li>
+</ul></li>
+</ul>
+
+<p><br>  </p>
+
+<pre><code class="r">library(modelr)
+grid &lt;- temp_bot %&gt;% 
+  data_grid(lat = seq_range(lat, 100)) # 100 evenly spaced values between min and max
+add_predictions(grid, mod) %&gt;%
+  ggplot(aes(x = lat)) + geom_line(aes(y = pred)) 
+</code></pre>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="segue" style="background:#EEC900;">
+  <hgroup>
+    <h1>Your turn...</h1>
+  </hgroup>
+  <article>
+    
+  </article>
+</slide>
+<slide class="" id="slide-16">
+<hgroup>
+  <h1>Exercise 2: Visualizing the temp ~ lat relationship</h1>
+</hgroup>
+<article data-timings="">
+  <div style="background-color:#F5F5F5; text-align:left; vertical-align: middle; padding:20px 47px;">
+    <p>Visualize your <code>temp ~ lat</code> model using  </p>
+
+<ul>
+<li><code>geom_smooth()</code> </li>
+<li><code>predict()</code> or <code>modelr::add_predictions()</code> to add a line manually. </li>
+</ul>
+
+  </div>
+  <footer>
+    <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+      <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+    </div>
+    <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+      <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+      font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+    </div>
+  </footer>
+</article>
+<!-- Presenter Notes -->
+</slide>
+
+<style>
+#slide-16 {
+  background-color: #EEC900;
+}
+</style>
+<slide class="" id="slide-17">
+  <hgroup>
+    <h2>Aside: intercept terms</h2>
+  </hgroup>
+  <article class = 'flexbox vcenter'>
+    <h3>R includes an intercept term in each model by <strong>default</strong></h3>
+
+<h3>\[y = a + bx\]</h3>
+
+<h3><code>y ~ x</code></h3>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Aside: intercept terms (cont)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>You can <strong>include</strong> an intercept explicitly by <strong>adding a 1</strong> to the formula term. If you want to <strong>exclude</strong> the intercept, add a 0 or <strong>substract a 1</strong>:</p>
+
+<pre><code class="r"># includes intercept
+mod1 &lt;- lm(sal ~ pres, data = sal_profile)
+mod1 &lt;- lm(sal ~ 1 + pres, data = sal_profile)
+</code></pre>
+
+<pre><code class="r"># excludes intercept
+mod2 &lt;- lm(sal ~ 0 + pres, data = sal_profile)
+mod2 &lt;- lm(sal ~ pres - 1, data = sal_profile)
+</code></pre>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-19" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">mod1
+</code></pre>
+
+<pre><code class="no-highlight">## 
+## Call:
+## lm(formula = sal ~ 1 + pres, data = sal_profile)
+## 
+## Coefficients:
+## (Intercept)         pres  
+##     5.57662      0.01283
+</code></pre>
+
+<pre><code class="r">mod2
+</code></pre>
+
+<pre><code class="no-highlight">## 
+## Call:
+## lm(formula = sal ~ pres - 1, data = sal_profile)
+## 
+## Coefficients:
+##   pres  
+## 0.1644
+</code></pre>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-20">
+  <hgroup>
+    
+  </hgroup>
+  <article class = 'flexbox vcenter'>
+    <p>Not including <strong>a</strong> forces the intercept through the origin of coordinates</p>
+
+<p><img src="lecture09_plotting_files/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="864" style="display: block; margin: auto;" /></p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="segue" style="background:#1874CD;">
+  <hgroup>
+    <h1>Interpreting models with categorical X variables</h1>
+  </hgroup>
+  <article>
+    <p><img src="img/Data_science_1c.png" style="height:150px;border:0;position: absolute; left: 900px; top: 50px" </img> </p>
+
+  </article>
+</slide>
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Categorical X variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>If <em>X</em> is categorical it doesn&#39;t make much sense to model \(Y ~ a + bX\) as \(X\) cannot be multiplied with \(b\). But R has a workaround:</p>
+
+<ul>
+<li>categorical predictors are <strong>converted into multiple continuous predictors</strong></li>
+<li>these are so-called <strong>dummy variables</strong></li>
+<li>each dummy variable is coded as <strong>0 (FALSE)</strong> or <strong>1 (TRUE)</strong></li>
+<li>the no. of dummy variables = no. of groups <strong>minus 1</strong></li>
+<li>all linear models fit categorical predictors using dummy variables</li>
+</ul>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-23" style="background:;">
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>The data</p>
+
+<pre><code class="r">df
+</code></pre>
+
+<pre><code class="no-highlight">##       y length
+## 1   5.3      S
+## 2   7.4      S
+## 3  11.3      L
+## 4  17.9      M
+## 5   3.9      L
+## 6  17.6      M
+## 7  18.4      L
+## 8  12.8      L
+## 9  12.1      M
+## 10  1.1      L
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>The dummy variables</p>
+
+<pre><code class="r">model_matrix(df, y ~ length)
+</code></pre>
+
+<pre><code class="no-highlight">## # A tibble: 10 x 3
+##    `(Intercept)` lengthM lengthS
+##            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1             1       0       1
+##  2             1       0       1
+##  3             1       0       0
+##  4             1       1       0
+##  5             1       0       0
+##  6             1       1       0
+##  7             1       0       0
+##  8             1       0       0
+##  9             1       1       0
+## 10             1       0       0
+</code></pre>
+
+<p><span style="font-size:25px; font-weight:bold; color:#ff0039">Where did the length class <strong>L</strong> go? </span> </p>
+
+</div>
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-24" style="background:;">
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>The data</p>
+
+<pre><code class="r">df
+</code></pre>
+
+<pre><code class="no-highlight">##       y length
+## 1   5.3      S
+## 2   7.4      S
+## 3  11.3      L
+## 4  17.9      M
+## 5   3.9      L
+## 6  17.6      M
+## 7  18.4      L
+## 8  12.8      L
+## 9  12.1      M
+## 10  1.1      L
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>The dummy variables</p>
+
+<pre><code class="r">model_matrix(df, y ~ length)
+</code></pre>
+
+<pre><code class="no-highlight">## # A tibble: 10 x 3
+##    `(Intercept)` lengthM lengthS
+##            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1             1       0       1
+##  2             1       0       1
+##  3             1       0       0
+##  4             1       1       0
+##  5             1       0       0
+##  6             1       1       0
+##  7             1       0       0
+##  8             1       0       0
+##  9             1       1       0
+## 10             1       0       0
+</code></pre>
+
+<p><span style="font-size:25px; font-weight:bold; color:#ff0039"><strong>L</strong> is represented by the <strong>intercept</strong> ! </span> </p>
+
+</div>
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Example: Including fmonth in our model</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">mod2 &lt;- lm(temp ~ lat + fmonth, data = temp_bot)
+summary(mod2)
+</code></pre>
+
+<pre><code class="no-highlight">## 
+## Call:
+## lm(formula = temp ~ lat + fmonth, data = temp_bot)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.7958 -1.2833 -0.3942  0.9504  7.9780 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  29.4164     1.3629  21.584  &lt; 2e-16 ***
+## lat          -0.4207     0.0230 -18.289  &lt; 2e-16 ***
+## fmonth2       0.1055     0.2803   0.376 0.706738    
+## fmonth3      -0.3645     0.2745  -1.328 0.184309    
+## fmonth4      -0.4013     0.3957  -1.014 0.310725    
+## fmonth5      -0.1904     0.3004  -0.634 0.526267    
+## fmonth6       0.6364     0.3007   2.116 0.034494 *  
+## fmonth7       2.1772     0.2857   7.620 4.44e-14 ***
+## fmonth8       1.9601     0.3015   6.501 1.08e-10 ***
+## fmonth9       1.4548     0.2775   5.242 1.82e-07 ***
+## fmonth10      1.0260     0.2893   3.546 0.000403 ***
+## fmonth11      2.0936     0.2755   7.599 5.20e-14 ***
+## fmonth12      1.4714     0.3774   3.899 0.000101 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.91 on 1518 degrees of freedom
+## Multiple R-squared:  0.3726, Adjusted R-squared:  0.3676 
+## F-statistic: 75.12 on 12 and 1518 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="segue" style="background:#1874CD;">
+  <hgroup>
+    <h1>Model assumption</h1>
+  </hgroup>
+  <article>
+    <p><img src="img/Data_science_1c.png" style="height:150px;border:0;position: absolute; left: 900px; top: 50px" </img></p>
+
+  </article>
+</slide>
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Assumptions of linear regression models</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Independence (most important!)</li>
+<li><strong>Homogeneity</strong> / homogenous variances (2nd most important)</li>
+<li>Normality / normal error distribution </li>
+<li>Linearity </li>
+</ol>
+
+<div style='float:left;width:48%;'>
+  <div class="boxorange1" style="margin-left: auto; margin-right: auto;">
+  <h3>Homogeneity</h3>
+    <p style="line-height: 140%">
+    → The variance in Y is constant (i.e. the variance does not change as Y gets bigger/smaller). <br>
+    → Only one variance has to be estimated and not one for every X value.<br>
+    → Also the multiple residuals for every X are expected to be homogeneous.
+    </p></div>
+    
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="lecture09_plotting_files/unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="504" style="display: block; margin: auto;" /></p>
+
+<p><kbd>p</kbd></p>
+
+</div>
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p>To avoid estimating a variance component for every X value, we assume the variance for all X values is the same. This is called the homogeneity assumption. This is important and implies that the spread of all possible values of the population is the same for every value of X. </p>
+
+    </section>
+  </aside>
+</slide>
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Check: outlier / influential observations</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Something on outliers</h3>
+
+<ul>
+<li>Might incorrectly influence analysis</li>
+<li>1 outlier only → take it out</li>
+<li>Several tests (e.g. regression) model the center of the data; if you are more interested in the outlier apply outlier-analysis techniques </li>
+<li>Outliers in 1 dimension are not necessarily outliers in 2 or more dimensions</li>
+</ul>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h3>But which one is an outlier? That depends on the dimensional perspective.</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/Outlier.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="600px" style="display: block; margin: auto;" /></p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h3>But which one is an outlier? That depends on the dimensional perspective.</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/Outlier.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="600px" style="display: block; margin: auto;" /></p>
+
+<p><small>1-dimensional (left panel): Point A might be an outlier of variable y, but not of x; C is an outlier of x but not y, and B is an outlier of both x and y separately </p>
+
+<p>2-dimensional space xy (left panel): A and C could be outliers (both are far away from the regression line) but B is not an outlier anymore, since it lies on the regression line.
+Right panel: Point A could be an outlier in the x-space but is definitely one in the xy-space</small></p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h3>Leverage / Cook‘s distance ⇒ step of model validation</h3>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Leverage</strong>: tool that identifies observations that have rather extreme values for the explanatory variables and may potentially bias the regression results</li>
+<li><strong>Cook&#39;s distance statistic</strong>: measure for influential points → identifies single observations that are influential on all regression parameters: it calculates a test statistic D that measures the change in all regression parameters when omitting an observation.
+
+<ul>
+<li>D &gt; 0.5 considered as too influential</li>
+<li>D &gt; 1: very critical</li>
+</ul></li>
+<li>It is easier to justify <strong>omitting influential points</strong> if they have both, <em>large Cook</em> and <em>large leverage values</em>.</li>
+</ul>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h3>Leverage / Cook‘s distance ⇒ step of model validation</h3>
+  </hgroup>
+  <article data-timings="">
+    <div class="img-with-text" style="position: absolute; left: 200px; top: 150px; z-index:100">
+    <img src="img/Leverage_CooksD.png" alt="" width=700px height=500px/>
+ <p><span class="source-img" style = "float:right">Adapted from: 
+    <a href='http://highstat.com/index.php/analysing-ecological-data' title=''>Zuur et al. (2007)</a></span></p>
+</div>
+
+<p><kbd>p</kbd></p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p>Applying a regression analysis with and without point B gives similar results, showing that B might have a high leverage, but it is not influential on the regression parameters.</p>
+
+    </section>
+  </aside>
+</slide>
+<slide class="" id="slide-33" style="background:;">
+  <hgroup>
+    <h2>Standard graphical output for model validation</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Lets use the temp ~ lat example</h3>
+
+<div style='float:left;width:48%;'>
+  <pre><code class="r">par(mfrow = c(2,2))
+plot(mod) 
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-34" style="background:;">
+  <hgroup>
+    <h2>Ordinary vs. standardized residuals</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Ordinary residuals: observed – fitted value</li>
+<li>Standardized residuals = the residual divided by its standard deviation:
+\[e_{stand.} = \frac{e_{i}}{\sqrt{MS_{Residual}*(1-h_{i})}}\]<br>
+
+<ul>
+<li>where \(e_{i}\) = observed - fitted value; \(h_{i}\) = leverage for observation <em>i</em>; \(MS_{Residual}\) represents the residual variance → more on this later</li>
+</ul></li>
+<li>Standardised residuals are assumed to be normally distributed with expectation 0 and variance 1; N(0,1).</li>
+<li>Consequently, <strong>large residual values (&gt;2)</strong> indicate a <strong>poor fit</strong> of the regression model.</li>
+</ul>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-35" style="background:;">
+  <hgroup>
+    <h2>Compute residuals in R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>You can compute both types of residuals using</p>
+
+<ul>
+<li><code>residuals(model)</code> (works too: <code>resid()</code>) from the <em>stats</em> package → returns a vector with the <strong>ordinary</strong> residuals</li>
+<li><p><code>rstandard(model)</code> from the <em>stats</em> package → returns a vector with the <strong>standardized</strong> residuals</p></li>
+<li><p><code>add_residuals(data, model, var = &quot;resid&quot;)</code> from the <em>modelr</em> package (in tidyverse) →  adds the variable &#39;resid&#39; containing the <strong>ordinary</strong> residuals to your data frame; useful when piping operations!</p></li>
+</ul>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-36" style="background:;">
+  <hgroup>
+    <h2>Additional graphics for model validation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/Add_diagnostic_plots.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="1100px" style="display: block; margin: auto;" /></p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="segue" style="background:#EEC900;">
+  <hgroup>
+    <h1>Your turn...</h1>
+  </hgroup>
+  <article>
+    
+  </article>
+</slide>
+<slide class="" id="slide-38">
+<hgroup>
+  <h1>Quiz: Test for spatial pattern in residuals</h1>
+</hgroup>
+<article data-timings="">
+  <div style="background-color:#F5F5F5; text-align:left; vertical-align: middle; padding:20px 47px;">
+    <p>Calculate the residuals using the function <code>residuals(mod)</code> and save them as a column in <code>temp_bot</code>.
+Now plot your datapoints on a map (with x=long and y=lat) and map the residuals to the color
+aesthetic</p>
+
+  </div>
+  <footer>
+    <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+      <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+    </div>
+    <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+      <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+      font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+    </div>
+  </footer>
+</article>
+<!-- Presenter Notes -->
+</slide>
+
+<style>
+#slide-38 {
+  background-color: #EEC900;
+}
+</style>
+<slide class="" id="slide-39" style="background:#CD2626;">
+  <hgroup>
+    <h1>Solution:</h1>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <pre><code class="r">modelr::add_residuals(temp_bot, mod) %&gt;%
+  ggplot(aes(x=long, y=lat)) +
+  geom_point(aes(col = temp)) +
+  scale_color_gradient2(midpoint = 5,
+    low = &quot;blue&quot;, mid = &quot;yellow&quot;, 
+    high = &quot;red&quot;, na.value = &quot;black&quot;,
+    limits = c(0, 10)) 
+</code></pre>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="lecture09_plotting_files/unnamed-chunk-27-1.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="504" /></p>
+
+</div>
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>An overview of common linear models</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/Common_models_overview.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="1000px" /></p>
+
+<!-- |Data Type Y | Data Type X | Distribution Y | R Function | Statistical Model -->
+
+<!-- |:----------:|:-----------:|:--------------:|:----------:|:---------------:| -->
+
+<!-- | continuous | continuous | Gaussian | `lm()` | normal linear regression | -->
+
+<!-- | continuous | categorical | Gaussian | `aov()` or `lm()` | Analysis of Variance (ANOVA)| -->
+
+<!-- | continuous | both | Gaussian | `lm()` | Analysis of Covariance (ANCOVA) | -->
+
+<!-- | count | both | Poisson, negative bionomial | `glm()` | log-linear models (Poisson / NB regression) | -->
+
+<!-- | proportion | both | binomial | `glm()` | binomial logistic regression | -->
+
+<!-- | binary | both | Bernoulli | `glm()` | logistic regression | -->
+
+<!-- | categorical (> 2 classes) | both | multinomial | `glm()` | multinomial logistic regression (seldom)| -->
+
+<!-- | categorical (> 2 classes) | both | Gaussian | `MASS::lda()` | linear discriminant analysis| -->
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="segue" style="background:#E5E5E5;">
+  <hgroup>
+    <h2>Overview of functions you learned today</h2>
+  </hgroup>
+  <article>
+    <p>linear regression model: 
+<code>lm()</code>, <code>coef()</code>, <code>summary()</code>, <code>confint()</code>
+<code>geom_smooth(method = &quot;lm&quot;)</code>,<br>
+<code>predict()</code>, <code>modelr::add_predictions()</code>,
+<code>plot(model)</code>, <code>residuals()</code>, <code>resid()</code>, <code>rstandard(model)</code>, <code>modelr::add_residuals(data)</code></p>
+
+  </article>
+</slide>
+<slide class="segue" style="background:#CD2626;">
+  <hgroup>
+    <h1>How do you feel now.....?</h1>
+  </hgroup>
+  <article>
+    
+  </article>
+</slide>
+<slide class="" id="slide-43" style="background:;">
+  <hgroup>
+    <h2>Totally confused?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="img/Comic_confused.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="250px" style="display: block; margin: auto;" /></p>
+
+<p>Try out the exercises and read up on linear regressions in</p>
+
+<ul>
+<li><a href="http://r4ds.had.co.nz/model-basics.html">chapter 23</a> on model basics in &#39;R for Data Science&#39;</li>
+<li>chapter 10 (linear regressions) in &quot;The R book&quot; (Crawley, 2013, 2nd edition) (an online pdf version is freely available <a href="https://www.cs.upc.edu/%7Erobert/teaching/estadistica/TheRBook.pdf">here</a>)</li>
+<li>or any other textbook on linear regressions</li>
+</ul>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-44">
+  <hgroup>
+    <h2>Totally bored?</h2>
+  </hgroup>
+  <article class = 'flexbox vcenter'>
+    <p><img src="img/Comic_bored.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="800px" style="display: block; margin: auto auto auto 0;" /></p>
+
+<p>Model the temperature or oxygen as a function of depth. Choose a single stations or model across all stations.</p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="" id="slide-45" style="background:;">
+  <hgroup>
+    <h2>Totally content?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Then go grab a coffee, lean back and enjoy the rest of the day...!</p>
+
+<p><img src="img/Comic_hammock.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="600px" style="display: block; margin: auto;" /></p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+<slide class="thank-you-slide segue" id="slide-46">
+  <footer>
+    <div style="position: absolute; left: 50px; top: 50px; z-index:100">
+        <img src = "assets/img/mds_logo_text_144dpi.png" height="100px" width="100px">
+    </div>
+  </footer>
+  <article>
+    <h1 style="padding-top: 120px;"> </h1>
+    <p style="color:#FFF;">
+      Bei weiteren Fragen kontaktieren Sie mich unter:<br><a href="saskia.otto@uni-hamburg.de">
+      saskia.otto@uni-hamburg.de</a>
+      </p>
+      <p data-config-contact="">
+      <a href="http://www.researchgate.net/profile/Saskia_Otto"
+          style="color:#F48C0A; font-weight: bold;">
+        http://www.researchgate.net/profile/Saskia_Otto</a><br>
+      <a href="http://www.github.com/saskiaotto"
+          style="color: #F48C0A; font-weight: bold;">
+        http://www.github.com/saskiaotto</a>
+    </p>
+    <p style="font-size: 15px; position: absolute; left: 125px; top: 480px; z-index:100; color: #FFF;">
+    <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+      <img alt="Creative Commons License" style="border-width:0"
+        src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br>
+        Diese Arbeit ist lizensiert unter der <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+        Creative Commons Attribution-ShareAlike 4.0 International License </a><br>mit Ausnahme externer
+        Materialien gekennzeichnet durch die <i>source:</i> Angabe. <br>
+        <b>Bild auf Titel- und Abschlussfolie:</b> Frühjahrsblüte in der Nordsee<br>
+        USGS/NASA Landsat: <a href="https://landsat.visibleearth.nasa.gov/view.php?id=92113">
+        Spring Color in the North Sea</a>, Landsat 8 - OLI, May 7, 2018<br>
+        (unter CC0 lizenz)
+    </p>
+  </article>
+</slide>
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Statistical modelling'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Linear statistical models'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Why use linear models?'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Linear models in'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Defining the model family in the R formula'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Overview of model formulae in R'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Your turn...'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Exercise 1:  Bottom temperature as a function of latitude'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Exercise 1:  Bottom temperature as a function of latitude'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Solution 1: <code>Iris</code> length relationship'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Visualizing simple linear regression models'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Visualize your linear regression'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Visualize your linear regression manually'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='NA'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Your turn...'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Exercise 2: Visualizing the temp ~ lat relationship'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Aside: intercept terms'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Aside: intercept terms (cont)'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='NA'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='NA'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Interpreting models with categorical X variables'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Categorical X variables'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='NA'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='NA'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Example: Including fmonth in our model'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Model assumption'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Assumptions of linear regression models'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Check: outlier / influential observations'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='But which one is an outlier? That depends on the dimensional perspective.'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='But which one is an outlier? That depends on the dimensional perspective.'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Leverage / Cook‘s distance ⇒ step of model validation'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Leverage / Cook‘s distance ⇒ step of model validation'>
+         32
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=33 title='Standard graphical output for model validation'>
+         33
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=34 title='Ordinary vs. standardized residuals'>
+         34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='Compute residuals in R'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Additional graphics for model validation'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='Your turn...'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='Quiz: Test for spatial pattern in residuals'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='Solution:'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='An overview of common linear models'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='Overview of functions you learned today'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='How do you feel now.....?'>
+         42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='Totally confused?'>
+         43
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=44 title='Totally bored?'>
+         44
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=45 title='Totally content?'>
+         45
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=46 title='NA'>
+         46
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/opencpu-0.5.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <!-- following line slidify default but is outdated -->
+  <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+  
+  <!-- accoding to https://www.mathjax.org/#gettingstarted  this is the line of code to
+    change the version number in the src attribute any time the version of MathJax changes
+    (Although this refers to a specific version, the latest.js file will load the most current version regardless of the one you specified.)
+  -->
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+  
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

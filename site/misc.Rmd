@@ -11,6 +11,8 @@ knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=FALSE, dev
 
 ## Nützliche Websites
 
+Siehe auch meinen Blog: [https://marinedatascience.co](https://marinedatascience.co) und die R-Kurs Seite [https://mareds.github.io/r_course/](https://mareds.github.io/r_course/)
+
 #### Allgemein
 
 - [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) → gut gemachte Übersichten der Funktionen in den tidyverse Paketen (auf 1-2 Seiten zusammengefasst)
@@ -32,12 +34,21 @@ knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=FALSE, dev
 - Das Stowers Institut hat im [ColorChart pdf](http://research.stowers.org/mcm/efg/R/Color/Chart/ColorChart.pdf) eine Liste aller möglichen Farben zusammengestellt, welches sehr hilfreich ist.
 
 
+
+#### Geostatistik
+
+- Einen sehr gutes online Buch ist "Geocomputation with R" von Robin Lovelace, Jakub Nowosad und Jannes Muenchow  auf der Website [https://geocompr.robinlovelace.net/](https://geocompr.robinlovelace.net/)
+
+- Weitere nützliche Pakete werden gut zusammengefasst von den beiden CRAN Task Forces **Spatial** und **SpatioTemporal**:
+    - [https://cran.r-project.org/web/views/Spatial.html](https://cran.r-project.org/web/views/Spatial.html)
+    - [https://cran.r-project.org/web/views/SpatioTemporal.html](https://cran.r-project.org/web/views/SpatioTemporal.html)
+
+
 #### R Markdown
 
 - Für einen Einstieg siehe auch: [R Markdown Webside](https://rmarkdown.rstudio.com) von R Studio.
 - R Studio [reference guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
 - Gutes online tutorial: [R for fledglings](https://www.uvm.edu/rsenr/vtcfwru/R/fledglings/08_Markdown.html)
-
 
 
 #### R Kurs auf Deutsch
