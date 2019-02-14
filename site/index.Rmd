@@ -41,7 +41,7 @@ Dieser Kurs basiert stark auf dem sog. **tidyverse framework** und stellt versch
 
 ## Lektionen
 
-Es gibt insgesamt 12 Lektionen die die Themenkomplexe **Programmierung in R**, **Datenexploration & Visualisierung** and **Statistische Modellierung** umfassen. Jede der Lektione enthält interaktive Quizze und Aufgaben (die nur im Webbrowser funktionieren, nicht in den PDF Dateien).
+Es gibt insgesamt 10 Lektionen die die Themenkomplexe **Programmierung in R**, **Datenexploration & Visualisierung** and **Statistische Modellierung** umfassen. Jede der Lektione enthält interaktive Quizze und Aufgaben (die nur im Webbrowser funktionieren, nicht in den PDF Dateien).
 
 Folgende keyboard shortcuts können genutzt werden während der einzelnen Lektionspräsentationen:
 
@@ -78,17 +78,19 @@ Mo  | 15:00-15:15 | Pause
 Mo  | 15:15-17:00 | Lektion 4 - Data wrangling - 1.Import
 Di  | 9:00-10:30  | Lektion 5 - Data wrangling - 2.Tidy Daten
 Di  | 10:30-10:45 | Pause
-Di  | 10:45-12:30 | Lektion 6 - Data wrangling - 3.Transformation
+Di  | 10:45-12:30 | Lektion 5 - Data wrangling - 2.Tidy Daten
 Di  | 12:30-13:30 | Mittagspause
-Di  | 13:30-15:00 | Lektion 7 - Visualisierung in R
+Di  | 13:30-15:00 | Lektion 6 - Data wrangling - 3.Transformation
 Di  | 15:00-15:15 | Pause
-Di  | 15:15-17:00 | Fortsetzung Lektion 7 
-Di  | 16:00-17:00 | Lektion 8 - Einfache Tests in R
-Mi  | 9:00-10:30  | Lektion 9 - Statistische Modellierung 1
+Di  | 15:15-17:00 | Lektion 6 - Data wrangling - 3.Transformation
+Di  | 16:00-17:00 | Lektion 7 - Visualisierung in R: Basisplots
+Mi  | 9:00-10:30  | Lektion 7 - Visualisierung in R: ggplot2
 Mi  | 10:30-10:45 | Pause
-Mi  | 10:45-12:00 | Lektion 10 - Statistische Modellierung 2
-Mi  | 12:30-13:30 | Mittagspause
-Mi  | 13:30-15:00 | Lektion 11 - Interpolation und Karten
+Mi  | 10:45-12:00 | Lektion 7 - Visualisierung in R: ggplot 2
+Mi  | 12:15-13:15 | Mittagspause
+Mi  | 13:15-13:45 | Lektion 8 - Einfache Tests in R
+Mi  | 13:45-15:00 | Lektion 9 - Statistische Modellierung
 Mi  | 15:00-15:15 | Pause
-Mi  | 15:15-16:00 | Lektion 12 - Rmarkdown zur Kommunikation 
+Mi  | 15:15-15:45 | Demo - Interpolation und Karten
+Mi  | 15:45-16:00 | Lektion 10 - Rmarkdown zur Kommunikation 
 Mi  | 16:00-17:00 | Kursabschluss
