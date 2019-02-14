@@ -568,7 +568,7 @@ p1</code></pre>
 <div id="schritt-3-karte-aufhubschen" class="section level2">
 <h2>Schritt 3: Karte aufhübschen</h2>
 <p>Beschriftungen kann man mit <code>labs()</code> verändern:</p>
-<pre class="r"><code>p1 &lt;- p1 + labs(fill = &quot;Temp (°C)&quot;, y = &quot;Längengrad&quot;, x = &quot;Breitengrad&quot;,
+<pre class="r"><code>p1 &lt;- p1 + labs(color = &quot;Temp (°C)&quot;, y = &quot;Längengrad&quot;, x = &quot;Breitengrad&quot;,
     title = &quot;Interpolierte Bodentemperatur im Februar 2015&quot;)</code></pre>
 <p>Wenn wir die graue Hintergrundfläche farblich ändern wollen, könnten wir das mit dem <em>panel.background</em> Argument in <code>theme()</code> machen (siehe weiter unten), oder wir verwenden wir einfach mal ein anderes Layout mit einem der vordefinierten `theme_() Funktionen:</p>
 <pre class="r"><code>p1 &lt;- p1 + theme_bw() # (bw steht für black-and-white)</code></pre>

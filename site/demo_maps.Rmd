@@ -10,7 +10,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=TRUE, dev.args=list(bg="transparent"),
+knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=FALSE, dev.args=list(bg="transparent"),
 fig.retina = 2, fig.path = "demo_map_plotting_files/")
 ```
 
@@ -183,7 +183,7 @@ p1
 Beschriftungen kann man mit `labs()` verändern:
 
 ```{r}
-p1 <- p1 + labs(fill = "Temp (°C)", y = "Längengrad", x = "Breitengrad",
+p1 <- p1 + labs(color = "Temp (°C)", y = "Längengrad", x = "Breitengrad",
     title = "Interpolierte Bodentemperatur im Februar 2015")
 ```
 
