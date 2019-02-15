@@ -9,7 +9,7 @@ knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=FALSE, dev
 
 <br>
 
-## Nützliche Websites
+## Nützliche Websites 
 
 Siehe auch meinen Blog: [https://marinedatascience.co](https://marinedatascience.co) und die R-Kurs Seite [https://mareds.github.io/r_course/](https://mareds.github.io/r_course/)
 
@@ -42,7 +42,7 @@ Siehe auch meinen Blog: [https://marinedatascience.co](https://marinedatascience
 - Weitere nützliche Pakete werden gut zusammengefasst von den beiden CRAN Task Forces **Spatial** und **SpatioTemporal**:
     - [https://cran.r-project.org/web/views/Spatial.html](https://cran.r-project.org/web/views/Spatial.html)
     - [https://cran.r-project.org/web/views/SpatioTemporal.html](https://cran.r-project.org/web/views/SpatioTemporal.html)
-
+    
 
 #### R Markdown
 
@@ -51,9 +51,10 @@ Siehe auch meinen Blog: [https://marinedatascience.co](https://marinedatascience
 - Gutes online tutorial: [R for fledglings](https://www.uvm.edu/rsenr/vtcfwru/R/fledglings/08_Markdown.html)
 
 
+
 #### R Kurs auf Deutsch
 
-Im Rahmen des [Lehrlabors](https://www.universitaetskolleg.uni-hamburg.de/universitaetskolleg-2-0/lehrlabor.html) der Universität Hamburg gibt es das Projekt [R-lab 2.0](https://rlab.blogs.uni-hamburg.de) welches online tutorials zu R in den Umweltwissenschaften mittels *swirl* anbietet. Auch das Institut für Marine Ökosystem und Fischereiwissenschaft ist an dem Projekt beteiligt und ein ähnlicher Datenanalyse R Kurs wie dieser wurde auch als *swirl* Kurs von mir umgesetzt (dieser allerdings auf Englisch).
+Im Rahmen des [Lehrlabors](https://www.universitaetskolleg.uni-hamburg.de/universitaetskolleg-2-0/lehrlabor.html) der Universität Hamburg gibt es das Projekt [R-lab 2.0](https://rlab.blogs.uni-hamburg.de) welches frei verfügbare online tutorials zu R und *swirl* Kurse in den Umweltwissenschaften anbietet. Auch das Institut für Marine Ökosystem und Fischereiwissenschaft ist an dem Projekt beteiligt und ein ähnlicher Datenanalyse R Kurs wie dieser wurde auch als *swirl* Kurs von mir umgesetzt (dieser allerdings auf Englisch).
 
 <br>
 <br>

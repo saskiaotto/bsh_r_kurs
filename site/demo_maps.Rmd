@@ -14,11 +14,12 @@ knitr::opts_chunk$set(tidy=FALSE, warning=FALSE, message=FALSE, cache=FALSE, dev
 fig.retina = 2, fig.path = "demo_map_plotting_files/")
 ```
 
-## Bodentemperatur im Februar
+<span style="font-weight:bold; text-decoration:underline; font-size: 24px">Bodentemperatur im Februar</span>
 
 ```{r, echo=FALSE}
 library(tidyverse)
 library(lubridate)
+library(RColorBrewer)
 hydro <- read_csv("data_site/1111473b.csv")
 names(hydro) <- c("cruise", "station", "type", "date_time", 
   "lat", "long", "depth", "pres", "temp", "psal", "doxy")
@@ -76,15 +77,16 @@ idw_mod <- as.data.frame(idw_mod)
 
 # Now the map
 world <- map_data("world")
-p1 <- ggplot() + geom_tile(data = idw_mod, aes(x,y,
-  fill = round(var1.pred, 0))) +
+p1 <- ggplot() + 
+  geom_tile(data = idw_mod, 
+    mapping = aes(x, y, fill = var1.pred)) +
   scale_fill_gradient2(midpoint = 6,
     low = "blue", mid = "yellow", high = "red", 
     na.value = "black", limits = c(0, 12)) +
   geom_point(data = temp_bot, aes(x = long, y = lat), shape = 21,
     colour = "grey80", alpha = 0.4) +
   geom_polygon(data = world, aes(x = long, y = lat, group = group),
-    fill = "white", colour = "black") +
+    fill = "black", colour = "black") +
   coord_map("ortho",  xlim = c(12, 28), ylim = c(54,66)) +
   labs(fill = "Temp (°C)", y = "Längengrad", x = "Breitengrad",
     title = "Interpolierte Bodentemperatur im Februar 2015") +
@@ -209,7 +211,7 @@ Ich habe bewusst diesen Schritt nach dem Layout-Schritt mit `theme_bw()` gemacht
 
  
 
-## Schritt 4: Die Interpolation der Temperatur
+## Schritt 4: Interpolation
 
 Für die nächsten Schritte reicht uns ggplot2 allerdings nicht aus und wür müssen auf 2 weitere wichtige Pakete zurückgreifen
 
@@ -259,6 +261,7 @@ Wir Ihr sehen könnt, ist das entstandene Objekt kein SpatialPointsDataFrame meh
 
 ```{r}
 idw_mod <- as.data.frame(idw_mod)  
+head(idw_mod)
 ```
 
 
@@ -274,8 +277,9 @@ Die Reihenfolge des Codes aus Schritt 1-3 muss leicht umgeändert werden, wenn d
 - Zum Abschluss wird das Layout geändert:
 
 ```{r}
-p2 <- ggplot() + geom_tile(data = idw_mod, aes(x,y,
-  fill = round(var1.pred, 0))) +
+p2 <- ggplot() + 
+  geom_tile(data = idw_mod, 
+    mapping = aes(x, y, fill = var1.pred)) +
   scale_fill_gradient2(midpoint = 6,
     low = "blue", mid = "yellow", high = "red", 
     na.value = "black", limits = c(0, 12)) +
@@ -290,6 +294,35 @@ p2 <- ggplot() + geom_tile(data = idw_mod, aes(x,y,
   theme(panel.grid = element_blank())
 p2
 ```
+
+
+Um die Abstufungen deutlicher zu machen, kann man auch die vorhergesagten Temperaturen runden und in einen Faktor umwandeln, um dann eine diskrete Skala zu verwenden:
+
+```{r}
+idw_mod$var1.pred <- as.factor(round(idw_mod$var1.pred, 0))
+p2 <- ggplot() + 
+  geom_tile(data = idw_mod, 
+    mapping = aes(x, y, fill = idw_mod$var1.pred)) +
+  # hier muss nun die scale_fill_manual für diskrete Werte genommen werden;
+  # und um eine ähnliche Farbskala zu verwenden können, wir die Matlab-Farben
+  # nehmen: dafür gibt es eine Funktion im Paket 'colorRamps' in der man n
+  # (Anzahl der Kategorien) spezifiziert:
+  scale_fill_manual(values = colorRamps::matlab.like(11)) +
+  # damit die hohen Zahlen weiterhin in der Legende oben stehen drehen wir die Skala um:
+  guides(fill =  guide_legend(reverse = TRUE)) +
+  geom_point(data = temp_bot, aes(x = long, y = lat), shape = 21,
+    colour = "grey80", alpha = 0.4) +
+  geom_polygon(data = world, aes(x = long, y = lat, group = group),
+    fill = "black", colour = "black") +
+  coord_map("ortho",  xlim = c(12, 28), ylim = c(54,66)) +
+  labs(fill = "Temp (°C)", y = "Längengrad", x = "Breitengrad",
+    title = "Interpolierte Bodentemperatur im Februar 2015") +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+p2
+```
+
+
 
 
 Et voila, fertig ist die Karte!

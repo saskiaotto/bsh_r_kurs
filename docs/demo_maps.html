@@ -489,14 +489,12 @@ div.tocify {
 </div>
 
 
-<div id="bodentemperatur-im-februar" class="section level2">
-<h2>Bodentemperatur im Februar</h2>
+<p><span style="font-weight:bold; text-decoration:underline; font-size: 24px">Bodentemperatur im Februar</span></p>
 <p><strong>Wie kommt man von hier ….</strong></p>
 <p><img src="demo_map_plotting_files/unnamed-chunk-2-1.png" width="672" /></p>
 <p><strong>… nach hier?</strong></p>
 <pre><code>## [inverse distance weighted interpolation]</code></pre>
 <p><img src="demo_map_plotting_files/unnamed-chunk-3-1.png" width="672" /></p>
-</div>
 <div id="datenvorbereitung" class="section level2">
 <h2>Datenvorbereitung</h2>
 <p>Bevor die Karten erstellt werden können, müssen wir die Daten (der <code>hydro</code> Datensatz) erstmal entsprechend tidy machen und transformieren:</p>
@@ -579,8 +577,8 @@ p1</code></pre>
 <p><code>theme()</code> bietet eine sehr große Auswahl an Argumenten bzw. Elementeinstellungen, von denen <em>panel.grid</em> (also das Gitter im panel selbst) nur eines ist. Hier lohnt sich ein Blick in die Hilfe mit <code>?theme</code> auf jedenfall. Mit der <code>element_blank()</code> geben wir an, dass das grid Element leer bleiben soll.</p>
 <p>Ich habe bewusst diesen Schritt nach dem Layout-Schritt mit <code>theme_bw()</code> gemacht, weil diese Funktion alle manuellen theme Veränderungen überschreibt und dann wäre unser grid wieder sichtbar.</p>
 </div>
-<div id="schritt-4-die-interpolation-der-temperatur" class="section level2">
-<h2>Schritt 4: Die Interpolation der Temperatur</h2>
+<div id="schritt-4-interpolation" class="section level2">
+<h2>Schritt 4: Interpolation</h2>
 <p>Für die nächsten Schritte reicht uns ggplot2 allerdings nicht aus und wür müssen auf 2 weitere wichtige Pakete zurückgreifen</p>
 <ul>
 <li><a href="https://www.rdocumentation.org/packages/gstat/versions/1.1-6">gstat</a>: dies ist ein Paket für <strong>räumliche und räumlich-zeitliche geostatische Modellierung und Simulation</strong> und enthält diverse kriging und Variogram Funktionen.</li>
@@ -623,7 +621,15 @@ sp::coordinates(dat) = ~x + y</code></pre>
 ## attr(,&quot;package&quot;)
 ## [1] &quot;sp&quot;</code></pre>
 <p>Wir Ihr sehen könnt, ist das entstandene Objekt kein SpatialPointsDataFrame mehr sondern ein SpatialPixelsDataFrame. Dieses muss zurück in einen data frame umgewandelt werden, damit wir es mit ggplot plotten können:</p>
-<pre class="r"><code>idw_mod &lt;- as.data.frame(idw_mod)  </code></pre>
+<pre class="r"><code>idw_mod &lt;- as.data.frame(idw_mod)  
+head(idw_mod)</code></pre>
+<pre><code>##          x       y var1.pred var1.var
+## 1 13.14403 53.8565  5.823782       NA
+## 2 13.24403 53.8565  5.825647       NA
+## 3 13.34403 53.8565  5.830258       NA
+## 4 13.44403 53.8565  5.837742       NA
+## 5 13.54403 53.8565  5.848246       NA
+## 6 13.64403 53.8565  5.862020       NA</code></pre>
 </div>
 <div id="einbau-der-interpolation-in-die-karte" class="section level3">
 <h3>Einbau der Interpolation in die Karte</h3>
@@ -636,8 +642,9 @@ sp::coordinates(dat) = ~x + y</code></pre>
 <li>Die Punkte könnte man wenn als hohle Kreise mit einzeichnen</li>
 <li>Zum Abschluss wird das Layout geändert:</li>
 </ul>
-<pre class="r"><code>p2 &lt;- ggplot() + geom_tile(data = idw_mod, aes(x,y,
-  fill = round(var1.pred, 0))) +
+<pre class="r"><code>p2 &lt;- ggplot() + 
+  geom_tile(data = idw_mod, 
+    mapping = aes(x, y, fill = var1.pred)) +
   scale_fill_gradient2(midpoint = 6,
     low = &quot;blue&quot;, mid = &quot;yellow&quot;, high = &quot;red&quot;, 
     na.value = &quot;black&quot;, limits = c(0, 12)) +
@@ -652,6 +659,29 @@ sp::coordinates(dat) = ~x + y</code></pre>
   theme(panel.grid = element_blank())
 p2</code></pre>
 <p><img src="demo_map_plotting_files/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Um die Abstufungen deutlicher zu machen, kann man auch die vorhergesagten Temperaturen runden und in einen Faktor umwandeln, um dann eine diskrete Skala zu verwenden:</p>
+<pre class="r"><code>idw_mod$var1.pred &lt;- as.factor(round(idw_mod$var1.pred, 0))
+p2 &lt;- ggplot() + 
+  geom_tile(data = idw_mod, 
+    mapping = aes(x, y, fill = idw_mod$var1.pred)) +
+  # hier muss nun die scale_fill_manual für diskrete Werte genommen werden;
+  # und um eine ähnliche Farbskala zu verwenden können, wir die Matlab-Farben
+  # nehmen: dafür gibt es eine Funktion im Paket &#39;colorRamps&#39; in der man n
+  # (Anzahl der Kategorien) spezifiziert:
+  scale_fill_manual(values = colorRamps::matlab.like(11)) +
+  # damit die hohen Zahlen weiterhin in der Legende oben stehen drehen wir die Skala um:
+  guides(fill =  guide_legend(reverse = TRUE)) +
+  geom_point(data = temp_bot, aes(x = long, y = lat), shape = 21,
+    colour = &quot;grey80&quot;, alpha = 0.4) +
+  geom_polygon(data = world, aes(x = long, y = lat, group = group),
+    fill = &quot;black&quot;, colour = &quot;black&quot;) +
+  coord_map(&quot;ortho&quot;,  xlim = c(12, 28), ylim = c(54,66)) +
+  labs(fill = &quot;Temp (°C)&quot;, y = &quot;Längengrad&quot;, x = &quot;Breitengrad&quot;,
+    title = &quot;Interpolierte Bodentemperatur im Februar 2015&quot;) +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+p2</code></pre>
+<p><img src="demo_map_plotting_files/unnamed-chunk-18-1.png" width="672" /></p>
 <p>Et voila, fertig ist die Karte!</p>
 </div>
 </div>

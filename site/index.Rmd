@@ -25,7 +25,7 @@ In den nächsten 3 Tagen werden wir uns mit folgenden Themen beschäftigen:
 - Datenmanagement und Bereinigen von Daten
 - Grafische Auswertungen mit R
 - Grundlegende statistische Analysen (Signifikanztest, Regressionsanalysen)
-- Darüber hinaus werden wir die Interpolation von Messdaten und Erstellung von Karten anreißen
+- Darüber hinaus werden wir die Interpolation von Messdaten und Erstellung von Karten anreißen (siehe Demo)
 
 <br>
 <img src="img_site/Tidyverse_packages.png" alt="Tidyverse packages" style="float:left;clear:left;width:650px;border:0;padding:0% 4% 0% 0%;"/>
