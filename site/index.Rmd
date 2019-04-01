@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Kurs-Übersicht
 
-**Willkommen beim 3-tätigen Einstiegskurs zur Datenanalyse mit R!**
+**Willkommen beim 3-tägigen Einstiegskurs zur Datenanalyse mit R!**
 
 In den nächsten 3 Tagen werden wir uns mit folgenden Themen beschäftigen:
 
@@ -41,9 +41,9 @@ Dieser Kurs basiert stark auf dem sog. **tidyverse framework** und stellt versch
 
 ## Lektionen
 
-Es gibt insgesamt 10 Lektionen die die Themenkomplexe **Programmierung in R**, **Datenexploration & Visualisierung** and **Statistische Modellierung** umfassen. Jede der Lektione enthält interaktive Quizze und Aufgaben (die nur im Webbrowser funktionieren, nicht in den PDF Dateien).
+Es gibt insgesamt 10 Lektionen die die Themenkomplexe **Programmierung in R**, **Datenexploration & Visualisierung** und **Statistische Modellierung** umfassen. Jede der Lektione enthält interaktive Quizze und Aufgaben (die nur im Webbrowser funktionieren, nicht in den PDF Dateien).
 
-Folgende keyboard shortcuts können genutzt werden während der einzelnen Lektionspräsentationen:
+Folgende keyboard shortcuts können während der einzelnen Lektionspräsentationen genutzt werden:
 
 
 <kbd>o</kbd> führt in den Übersichtsmodus
