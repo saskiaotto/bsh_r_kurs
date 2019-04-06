@@ -77,7 +77,7 @@
 
 <pre><code class="r">x &lt;- 1:10
 y &lt;- 1:10
-z &lt;- cbind(x,y)  # matrix
+z &lt;- cbind(x,y)  # Matrix
 </code></pre>
 
 <p><img src="img/Workspace.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="600px" style="display: block; margin: auto auto auto 0;" /></p>
@@ -98,13 +98,13 @@ z &lt;- cbind(x,y)  # matrix
   <article data-timings="">
     <ul>
 <li>Die globale Umgebung ist der erste Ort des Suchverzeichnis von R. </li>
-<li>Jedesmal wenn ein Nutzer eine neue R Session startet wird vom System eine neue Umgebung für Objekte geschaffen, die <strong>während der session</strong> generiert werden.</li>
+<li>Jedesmal wenn ein Nutzer eine neue R Session startet, wird vom System eine neue Umgebung für Objekte geschaffen, die <strong>während der session</strong> generiert werden.</li>
 <li>Du kannst die Liste aller Objekte im Arbeitsplatz in der Konsole anzeigen lassen mit <code>ls()</code>:</li>
 </ul>
 
 <pre><code class="r">x &lt;- 1:10
 y &lt;- 1:10
-z &lt;- cbind(x,y)  # matrix
+z &lt;- cbind(x,y)  # Matrix
 ls()
 </code></pre>
 
@@ -217,10 +217,10 @@ rm(x)
     <p><img src="img/R_operators_relational.jpg" style="height:50px;border:0;position: absolute; left: 800px; top: 50px" </img> </p>
 
 <ul>
-<li>Beziehen sich auf die <strong>Beziehung zwischen 2 Operanden</strong></li>
-<li><strong>Sechs</strong> relationale Operatoren werden in R unterstützt</li>
-<li>Der <strong>Output</strong> ist immer <strong>logisch</strong> (TRUE or FALSE)</li>
-<li>Arbeiten <strong>Element-weise</strong></li>
+<li>Beziehen sich auf die <strong>Beziehung zwischen 2 Operanden</strong>.</li>
+<li><strong>Sechs</strong> relationale Operatoren werden in R unterstützt.</li>
+<li>Der <strong>Output</strong> ist immer <strong>logisch</strong> (TRUE or FALSE).</li>
+<li>Arbeiten <strong>Element-weise</strong>.</li>
 </ul>
 
 <table><thead>
@@ -253,7 +253,7 @@ rm(x)
 <tr>
 <td align="center">&gt;=</td>
 <td>a &gt; = b</td>
-<td>a ist <strong>GRÖSSER als oderGLEICH wie</strong> b</td>
+<td>a ist <strong>GRÖSSER als oder GLEICH wie</strong> b</td>
 </tr>
 <tr>
 <td align="center">!=</td>
@@ -469,7 +469,7 @@ print ( a &lt;= b ) # kleiner oder gleich
     <p><img src="img/R_operators_logical.jpg" style="height:50px;border:0;position: absolute; left: 800px; top: 50px" </img> </p>
 
 <ul>
-<li>Funktionieren nur bei den Grunddatentypen (logicisch, numerisch) und bei <strong>atomaren Vektoren</strong> in R. </li>
+<li>Funktionieren nur bei den Grunddatentypen (logisch, numerisch) und bei <strong>atomaren Vektoren</strong> in R. </li>
 </ul>
 
 <p><img src="img/Bool_operators.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="1000px" /></p>
@@ -728,7 +728,7 @@ x[ x &lt; 4 &amp; x &gt;= 2]
 </slide>
 <slide class="" id="slide-19" style="background:;">
   <hgroup>
-    <h2>Operationen element- vs. operanden-weise</h2>
+    <h2>Operationen Element- vs. Operanden-weise</h2>
   </hgroup>
   <article data-timings="">
     <p><img src="img/R_operators_logical.jpg" style="height:50px;border:0;position: absolute; left: 800px; top: 50px" </img> </p>
@@ -911,7 +911,7 @@ a &lt; 60
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-explanation">
-  <p>R checkt für jedes Element in <strong>a</strong> ob sein Wert kleiner als 60 ist und gibt dann ein TRUE zurück, ansonsten ein FALSE. Da <strong>a</strong> ein Vektor mit 10 Elementen ist, enthält der zurückgegebene Vektor 10 logische Elemente. </p>
+  <p>R checkt für jedes Element in <strong>a</strong>, ob sein Wert kleiner als 60 ist und gibt dann ein TRUE zurück, ansonsten ein FALSE. Da <strong>a</strong> ein Vektor mit 10 Elementen ist, enthält der zurückgegebene Vektor 10 logische Elemente. </p>
 
 </div>
 </div>
@@ -953,11 +953,11 @@ a &lt;= b
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-hint">
-  <p><small>R wendet die Operatoren Element-weise in beiden Vektoren an: 16 &lt;= 0? 47 &lt;= 49? 207 &lt;= 410?</small></p>
+  <p><small>R wendet die Operatoren Element-weise an beiden Vektoren an: 16 &lt;= 0? 47 &lt;= 49? 207 &lt;= 410?</small></p>
 
 </div>
 <div class="quiz-explanation">
-  <p>2 Werte in <strong>a</strong> sind kleiner oder gleich den korrespondieren Werten in <strong>b</strong> (=TRUE), und zwar 16 und 47.</p>
+  <p>2 Werte in <strong>a</strong> sind kleiner oder gleich den korrespondieren Werten in <strong>b</strong> (=TRUE), und zwar 47 und 207</p>
 
 </div>
 </div>
@@ -1003,9 +1003,9 @@ b &lt;- c(0, 0, 3, 6, 7, 9); c &lt;- 3
 </div>
 <div class="quiz-explanation">
   <ol>
-<li><p><code>a &lt; b</code> gibt einen logischen Vektor der Länge a bzw. b zurück (=c(FALSE,FALSE,TRUE,FALSE,FALSE,FALSE)), womit dann der Vektor <strong>a</strong> induziert werden kann. Nur das 3. Element in <strong>a</strong> (=1) ist kleiner als das korrespondierende Element in <strong>b</strong> (=3), somit wird nur das 3. Element von <strong>a</strong> ausgewhlt: <span class='answer'>1</span></p></li>
-<li><p><strong>c</strong> wird zuerst recycled (sprich der Wert 3 wird 6mal wiederholt) damit die Element-weisen vergleiche gemacht werden können. Nur das 3. Element in <strong>b</strong> hat den gleichen Wert wie das 3. Element in <strong>c</strong>. Somit wird dessen Zahl wiedergegeben (die 3): <span class='answer'>3</span>.</p></li>
-<li><p><code>c &gt;= b</code> gibt einen Vektor mit 3 TRUEs und 3 FALSEs zurück. Diese werden für die Summenrechnung in 0 und 1 umgewandelt (TRUE =1 und FALSE = 0):<span class='answer'>3</span>.</p></li>
+<li><p><code>a &lt; b</code> gibt einen logischen Vektor der Länge a bzw. b zurück (=c(FALSE,FALSE,TRUE,FALSE,FALSE,FALSE)), womit dann der Vektor <strong>a</strong> induziert werden kann. Nur das 3. Element in <strong>a</strong> (=1) ist kleiner als das korrespondierende Element in <strong>b</strong> (=3), somit wird nur das 3. Element von <strong>a</strong> ausgewählt: <span class='answer'>1</span></p></li>
+<li><p><strong>c</strong> wird zuerst recycled (sprich der Wert 3 wird 6mal wiederholt) damit die Element-weisen Vergleiche gemacht werden können. Nur das 3. Element in <strong>b</strong> hat den gleichen Wert wie das 3. Element in <strong>c</strong>. Somit wird dessen Zahl wiedergegeben: <span class='answer'>3</span>.</p></li>
+<li><p><code>c &gt;= b</code> gibt einen Vektor mit 3 TRUEs und 3 FALSEs zurück. Diese werden für die Summenrechnung in 0 und 1 umgewandelt (TRUE =1 und FALSE = 0): <span class='answer'>3</span>.</p></li>
 </ol>
 
 </div>
@@ -1028,7 +1028,7 @@ b &lt;- c(0, 0, 3, 6, 7, 9); c &lt;- 3
 </hgroup>
 <article data-timings="">
   <div style="background-color:#F5F5F5; text-align:left; vertical-align: middle; padding:20px 47px;">
-    <p>An 6 Tagen wurde gemessen ob es sonnig war (sunny = TRUE) und heiß (hot = TRUE). Jetzt wollen wir auf verschiedene Bedingungen testen (versuche auch hier wieder ohne R die Lösung zu finden):</p>
+    <p>An 6 Tagen wurde gemessen, ob es sonnig (sunny = TRUE) und heiß (hot = TRUE) war. Jetzt wollen wir auf verschiedene Bedingungen testen (versuche auch hier wieder ohne R die Lösung zu finden):</p>
 
 <pre><code class="r">sunny &lt;- c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE)
 hot &lt;- c(FALSE, TRUE, FALSE, TRUE, FALSE, TRUE)
@@ -1193,7 +1193,7 @@ sunny | hot
 </slide>
 <slide class="segue" style="background:grey;">
   <hgroup>
-    <h1>Sehr gut!!!! Du hast die R Grundlagen gemeistert, die elementar sind für alles was jetzt kommt.</h1>
+    <h1>Sehr gut!!!! Du hast die R Grundlagen gemeistert, die elementar sind für alles was jetzt folgen wird.</h1>
   </hgroup>
   <article>
     
@@ -1233,8 +1233,7 @@ sunny | hot
   <article class = 'flexbox vcenter'>
     <p><img src="img/Comic_confused.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="400px" style="display: block; margin: auto;" /></p>
 
-<p>Du kannst in folgendem online tutorial auf der tutorialcart website:<a href="https://www.tutorialkart.com/r-tutorial/r-operators/">https://www.tutorialkart.com/r-tutorial/r-operators/</a>.
-mehr zu Operatoren nachlesen.</p>
+<p>Du kannst in folgendem online tutorial auf der tutorialcart website <a href="https://www.tutorialkart.com/r-tutorial/r-operators/">https://www.tutorialkart.com/r-tutorial/r-operators/</a> mehr zu Operatoren nachlesen.</p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1438,7 +1437,7 @@ mehr zu Operatoren nachlesen.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Operationen element- vs. operanden-weise'>
+        data-slide=19 title='Operationen Element- vs. Operanden-weise'>
          19
       </a>
     </li>
@@ -1504,7 +1503,7 @@ mehr zu Operatoren nachlesen.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Sehr gut!!!! Du hast die R Grundlagen gemeistert, die elementar sind für alles was jetzt kommt.'>
+        data-slide=30 title='Sehr gut!!!! Du hast die R Grundlagen gemeistert, die elementar sind für alles was jetzt folgen wird.'>
          30
       </a>
     </li>

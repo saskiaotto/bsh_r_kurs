@@ -67,7 +67,7 @@
     <h2>Datenstrukturen</h2>
   </hgroup>
   <article data-timings="">
-    <p>R’s Grund-Datenstrukturen lassen sich einteilen in Ihre <strong>Dimensionalität</strong> (1d, 2d, or nd) und <strong>Homogenität</strong> ihrer Datentypen. <strong>Fünf</strong> Datentypen lassen sich damit unterscheiden: </p>
+    <p>Die Datenstrukturen in R lassen sich einteilen in ihre <strong>Dimensionalität</strong> (1d, 2d, or nd) und <strong>Homogenität</strong> ihrer Datentypen. <strong>Fünf</strong> Datentypen lassen sich damit unterscheiden: </p>
 
 <table><thead>
 <tr>
@@ -107,7 +107,7 @@
 </slide>
 <slide class="segue" style="background:#1874CD;">
   <hgroup>
-    <h1>The einfachste Sruktur: atomare Vektoren</h1>
+    <h1>Die einfachste Sruktur: atomare Vektoren</h1>
   </hgroup>
   <article>
     <p><img src="img/Data_science_1a.png" style="height:150px;border:0;position: absolute; left: 900px; top: 50px" </img> </p>
@@ -120,7 +120,7 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>werden mit <code>c()</code> genieriert (kurz for <strong>combine</strong>):</li>
+<li>werden mit <code>c()</code> genieriert (kurz für <strong>combine</strong>):</li>
 </ul>
 
 <pre><code class="r">dbl_var &lt;- c(1, 2.5, 4.5)
@@ -158,7 +158,7 @@ chr_var &lt;- c(&quot;these are&quot;, &quot;some strings&quot;)
 
 <div style='float:left;width:48%;'>
   <ul>
-<li>oder mit <code>seq()</code> (= <strong>sequence</strong>) </li>
+<li>oder mit <code>seq()</code> (= <strong>sequence</strong>):</li>
 </ul>
 
 <pre><code class="r">seq(from = 0, to = 1, by = 0.2)
@@ -170,7 +170,7 @@ chr_var &lt;- c(&quot;these are&quot;, &quot;some strings&quot;)
 </div>
 <div style='float:right;width:48%;'>
   <ul>
-<li>oder <code>rep()</code>(= <strong>repeat</strong>)</li>
+<li>oder <code>rep()</code>(= <strong>repeat</strong>):</li>
 </ul>
 
 <pre><code class="r">rep(&quot;a&quot;, times = 5)
@@ -263,7 +263,7 @@ length(x)
   <article data-timings="">
     <ol>
 <li><p>Datentypumwandlung (&#39;coercion&#39;)</p></li>
-<li><p>Handling Vektoren unterschiedlicher Länge</p></li>
+<li><p>Handling von Vektoren unterschiedlicher Länge</p></li>
 <li><p>Namen für Elemente in Vektoren</p></li>
 <li><p>Extrahieren von Elemente bzw. Induzieren von Vektoren</p></li>
 </ol>
@@ -286,8 +286,8 @@ length(x)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Alle Elemente eines atomaren Vektors müssten <strong>den gleichen</strong> Datentypen haben</li>
-<li><strong>Unterschiedliche Typen</strong> werden &#39;zwangsungewandelt (<strong>coerced</strong>) und zwar zum flexibleren Typen</li>
+<li>Alle Elemente eines atomaren Vektors müssen <strong>den gleichen</strong> Datentypen haben.</li>
+<li><strong>Unterschiedliche Typen</strong> werden &#39;zwangsumgewandelt&#39; (<strong>coerced</strong>) und zwar zum flexibleren Typen.</li>
 <li>Flexibilität (von gering zu hoch):
 
 <ul>
@@ -313,8 +313,8 @@ length(x)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Alle Elemente eines atomaren Vektors müssten <strong>den gleichen</strong> Datentypen haben</li>
-<li><strong>Unterschiedliche Typen</strong> werden &#39;zwangsungewandelt (<strong>coerced</strong>) und zwar zum flexibleren Typen</li>
+<li>Alle Elemente eines atomaren Vektors müssen <strong>den gleichen</strong> Datentypen haben.</li>
+<li><strong>Unterschiedliche Typen</strong> werden &#39;zwangsungewandelt (<strong>coerced</strong>) und zwar zum flexibleren Typen.</li>
 <li>Flexibilität (von gering zu hoch):
 
 <ul>
@@ -323,7 +323,7 @@ length(x)
 </ul>
 
 <p><br><br>
-character und integer wird zu character:</p>
+Beispiel: character und integer wird zu character</p>
 
 <pre><code class="r">str(c(&quot;a&quot;, 1))
 </code></pre>
@@ -348,7 +348,7 @@ character und integer wird zu character:</p>
     <h2>1. Coercion (Forts.s)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Wenn logische Elemente zu integer oder double umgewandelt werden, wird jedes <code>TRUE</code> eine 1 und <code>FALSE</code> wird 0. Dies kann sehr nützlich bei Berechnungen mit <code>sum()</code> und <code>mean()</code> sein:</p>
+    <p>Wenn logische Elemente zu integer oder double umgewandelt werden, wird jedes <code>TRUE</code> zu einer 1 und <code>FALSE</code> wird zu 0. Dies kann bei Berechnungen mit <code>sum()</code> und <code>mean()</code> sehr nützlich sein:</p>
 
 <pre><code class="r">x &lt;- c(FALSE, FALSE, TRUE)
 as.numeric(x)
@@ -357,7 +357,7 @@ as.numeric(x)
 <pre><code class="no-highlight">## [1] 0 0 1
 </code></pre>
 
-<pre><code class="r"># Total number of TRUEs
+<pre><code class="r"># Summer aller TRUEs
 sum(x)
 </code></pre>
 
@@ -410,7 +410,7 @@ sum(x)
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-explanation">
-  <p>The infite set of numbers cannot be reduced to simply 2 states whereas TRUE or FALSE can easily be coerced into the two numbers 0 and 1. As the value 1 in this vector is not specified explicitly as integer the vector coerces both to type double.</p>
+  <p>Die unendliche Menge an Zahlen kann nicht einfach in 2 Zustände umgewandelt werden während TRUE oder FALSE recht einfach in 2 Zahlen 1 und 0 umgewandelt werden können. Da hier die Zahl 1 nicht explizit als integer deklariert ist, wird TRUE zum Typ double umgewandelt.s</p>
 
 </div>
 </div>
@@ -452,7 +452,7 @@ sum(x)
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-explanation">
-  <p>A string (in this case &quot;a&quot;) has no corresponding number it can be coerced to. But instead, a number such as the 1 can be coerced to a string.</p>
+  <p>Eine Zeichenkette (in diesem Fall &quot;a&quot;) hat keine korrespondierende Zahl in die es umgewandelt werden kann. Dageen kann eine Zahl einfach in eine Zeichenkette umgewandelt werden.</p>
 
 </div>
 </div>
@@ -494,7 +494,7 @@ sum(x)
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-explanation">
-  <p>Now the number 1 is explicitly defined as integer, hence the TRUE is coerced to the integer 1.</p>
+  <p>In diesem Fall ist 1 klar als integer definiert, daher wird das TRUE zum integer  umgewandelt.</p>
 
 </div>
 </div>
@@ -579,11 +579,11 @@ x[z] &lt;- NA  # place NAs on the positions in z
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-hint">
-  <p><small>Nutze die <code>is.na()</code> Funktion, welche einen logischen Vektor ausgibt, welchen mann dann aufsummieren kann.</small></p>
+  <p><small>Nutze die <code>is.na()</code> Funktion, welche einen logischen Vektor ausgibt, welchen man dann aufsummieren kann.</small></p>
 
 </div>
 <div class="quiz-explanation">
-  <p>Die summe aller NAs kann mit <code>sum(is.na(x))</code> ermittelt werden.</p>
+  <p>Die Summe aller NAs kann mit <code>sum(is.na(x))</code> ermittelt werden.</p>
 
 <ol>
 <li><span class='answer'>2876</span></li>
@@ -605,19 +605,15 @@ x[z] &lt;- NA  # place NAs on the positions in z
 </slide>
 <slide class="" id="slide-17" style="background:;">
   <hgroup>
-    <h2>2. Recycling Regeln</h2>
+    <h2>2. Recycling Regel</h2>
   </hgroup>
   <article data-timings="">
-    <p>As well as implicitly coercing the types of vectors to be compatible, R will also implicitly coerce the length of vectors. This is called vector recycling, because the <strong>shorter vector is repeated</strong>, or recycled, to the <strong>same length as the longer vector</strong>.</p>
+    <p>Ähnlich wie die implizierte Datentyp-Umwandlung führt R auch eine implizierte Verlängerung von Vektoren bei Operationen mit 2 Vektoren durch: der <strong>kürzere Vektor</strong> wird auf die gleiche Länge des längeren Vektors <strong>verlängert</strong>, indem die Lücke mit den bereits vorhandenen Elementen gefüllt wird.</p>
 
 <pre><code class="r">1:10 + 100
 </code></pre>
 
 <pre><code class="no-highlight">##  [1] 101 102 103 104 105 106 107 108 109 110
-</code></pre>
-
-<pre><code class="r"># What will happen with this summation?
-1:10 + 1:2
 </code></pre>
 
     <footer>
@@ -637,7 +633,7 @@ x[z] &lt;- NA  # place NAs on the positions in z
     <h2>2. Recycling Regel</h2>
   </hgroup>
   <article data-timings="">
-    <p>Ähnlich wie die implizierte Datentyp-Umwandlung führt R auch eine implizierte Verlängerung von Vektoren bei Operationen mit 2 Vektoren durch: der <strong>kürzere Vektor</strong>auf die gleiche Länge des längeren Vektors <strong>verlängert</strong>, indem die Lücke mit den bereits vorhandenen Elementen gefüllt wird.</p>
+    <p>Ähnlich wie die implizierte Datentyp-Umwandlung führt R auch eine implizierte Verlängerung von Vektoren bei Operationen mit 2 Vektoren durch: der <strong>kürzere Vektor</strong> wird auf die gleiche Länge des längeren Vektors <strong>verlängert</strong>, indem die Lücke mit den bereits vorhandenen Elementen gefüllt wird.</p>
 
 <pre><code class="r">1:10 + 100
 </code></pre>
@@ -687,10 +683,10 @@ b &lt;- 1:5
 </code></pre>
 
 <ol>
-<li>Der Output wist ein Vektor der Länge 3</li>
-<li>Der Output wist ein Vektor der Länge 3, das letzte Element ist</li>
-<li><em>Der Output wist ein Vektor der Länge 3, das letzte Element ist 75</em></li>
-<li>Der Output wist ein Vektor der Länge 3, das letzte Element ist NA</li>
+<li>Der Output ist ein Vektor der Länge 1</li>
+<li>Der Output ist ein Vektor der Länge 3, das letzte Element ist 900</li>
+<li><em>Der Output ist ein Vektor der Länge 5, das letzte Element ist 75</em></li>
+<li>Der Output ist ein Vektor der Länge 5, das letzte Element ist NA</li>
 </ol>
 
   <button class="quiz-submit btn btn-primary">Submit</button>
@@ -699,7 +695,7 @@ b &lt;- 1:5
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-explanation">
-  <p>R füllt die Lücke des kürzeren Vektors mit den existierenden Elementen auf: Position 4 erhält das 1. Element, Position 5 das 2. und so weiter gets the first element again, position 5 the second. Und die <3> wird auch auf die Länge von <strong>b</strong> verlängert.</p>
+  <p>R füllt die Lücke der kürzeren Vektoren mit den existierenden Elementen auf: Position 4 in <strong>a</strong> erhält das 1. Element, die Position 5 das 2. Element. Und die <3> wird auch auf die Länge von <strong>b</strong> verlängert in dem sie 5 mal wiederholt wird.</p>
 
 </div>
 </div>
@@ -720,7 +716,7 @@ b &lt;- 1:5
     <h2>3. Vektorelemente benennen</h2>
   </hgroup>
   <article data-timings="">
-    <p>Alle Elemente in Vektoren können Namen erhalten. Entweder beim Erstellen mit <code>c()</code>:</p>
+    <p>Alle Elemente in Vektoren können Namen erhalten. Entweder beim Erstellen mit <code>c()</code></p>
 
 <pre><code class="r">c(a = 1, b = 2, c = 4)
 </code></pre>
@@ -729,7 +725,7 @@ b &lt;- 1:5
 ## 1 2 4
 </code></pre>
 
-<p>Oder <strong>anschließend</strong> mit der Funktion <code>names()</code></p>
+<p>oder <strong>anschließend</strong> mit der Funktion <code>names()</code></p>
 
 <pre><code class="r">x &lt;- c(1,5,3)
 names(x) &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
@@ -763,9 +759,9 @@ x
 
 <ol>
 <li>Mittels <strong>numerischem</strong> Vektor der integers enthält und die Position angibt</li>
-<li>Mittels<strong>logischem</strong> Vektor </li>
-<li>Mittels Vektor<strong>namem</strong> --&gt; ungewähnlich</li>
-<li>Using <strong>nothing</strong>  --&gt; ungewähnlich</li>
+<li>Mittels <strong>logischem</strong> Vektor </li>
+<li>Mittels Vektor<strong>namen</strong> → ungewöhnlich</li>
+<li><strong>Nichts</strong> angeben (eckige Klammern sind leer) → ungewöhnlich</li>
 </ol>
 
     <footer>
@@ -785,7 +781,7 @@ x
     <p>1.Mittels <strong>numerischem</strong> Vektor der integers enthält und die Position angibt</p>
 
 <pre><code class="r">x &lt;- c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;)
-# positive integers keep elements at position:
+# Positive integers wählen die entsprechenden Elemente aus:
 x[c(5, 1, 3)]
 </code></pre>
 
@@ -809,14 +805,14 @@ x[c(5, 1, 3)]
     <p>1.Mittels <strong>numerischem</strong> Vektor der integers enthält und die Position angibt</p>
 
 <pre><code class="r">x &lt;- c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;)
-# positive integers keep elements at position:
+# Positive integers wählen die entsprechenden Elemente aus
 x[c(5, 1, 3)]
 </code></pre>
 
 <pre><code class="no-highlight">## [1] &quot;five&quot;  &quot;one&quot;   &quot;three&quot;
 </code></pre>
 
-<pre><code class="r"># repeating integers make vectors longer:
+<pre><code class="r"># Sich wiederholende integers verlängern den Vektor:
 x[c(1,1,1,1,2,2,2,2,3,3,3,4,4,5,5)]
 </code></pre>
 
@@ -841,14 +837,14 @@ x[c(1,1,1,1,2,2,2,2,3,3,3,4,4,5,5)]
     <p>1.Mittels <strong>numerischem</strong> Vektor der integers enthält und die Position angibt</p>
 
 <pre><code class="r">x &lt;- c(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;)
-# positive integers keep elements at position:
+# Positive integers wählen die entsprechenden Elemente aus
 x[c(5, 1, 3)]
 </code></pre>
 
 <pre><code class="no-highlight">## [1] &quot;five&quot;  &quot;one&quot;   &quot;three&quot;
 </code></pre>
 
-<pre><code class="r"># repeating integers make vector longer:
+<pre><code class="r"># Sich wiederholende integers verlängern den Vektor:
 x[c(1,1,1,1,2,2,2,2,3,3,3,4,4,5,5)]
 </code></pre>
 
@@ -856,7 +852,7 @@ x[c(1,1,1,1,2,2,2,2,3,3,3,4,4,5,5)]
 ##  [9] &quot;three&quot; &quot;three&quot; &quot;three&quot; &quot;four&quot;  &quot;four&quot;  &quot;five&quot;  &quot;five&quot;
 </code></pre>
 
-<pre><code class="r"># negative integers remove elements:
+<pre><code class="r"># Negative integers entfernen Elemente:
 x[c(-3,-5)]
 </code></pre>
 
@@ -879,11 +875,11 @@ x[c(-3,-5)]
   <article data-timings="">
     <p>1.Mittels <strong>numerischem</strong> Vektor der integers enthält und die Position angibt</p>
 
-<pre><code class="r"># but you cannot mix
-# x[c(1,2,-5)] # --&gt; gives error message
+<pre><code class="r"># Positive und negative integers lassen sich nicht kombinieren:
+# x[c(1,2,-5)] # --&gt; gibt Fehlermeldung
 
-# Using zero
-x[0] # --&gt; returns an empty vector
+# Beim Verwenden der Null:
+x[0] # --&gt; gibt leeren Vektor wider
 </code></pre>
 
 <pre><code class="no-highlight">## character(0)
@@ -904,20 +900,20 @@ x[0] # --&gt; returns an empty vector
 <slide class="" id="slide-27" style="background:;">
   <article data-timings="">
     <ol>
-<li>Mittels<strong>logischem</strong> Vektor: alle Elemente mit einem korrespondierenden <code>TRUE</code> werden ausgewählt.Diese Art wird meist genutz in Kombination mit Operationen und vergleichenden Funktionen.</li>
+<li>Mittels <strong>logischem</strong> Vektor: alle Elemente mit einem korrespondierenden <code>TRUE</code> werden ausgewählt. Diese Art wird meist in Kombination mit Operationen und vergleichenden Funktionen genutzt.</li>
 </ol>
 
 <pre><code class="r">x &lt;- c(10, 3, NA, 5, 8, 1, NA)
 
-# All non-missing values of x
+# Alle Elemente von x die keine NAs enthalten
 b &lt;- is.na(x)
-x[!b]  # the ! reverses the TRUE/FALSE values
+x[!b]  # Das Ausrufungszeichen ! kehrt die TRUE/FALSE Werte um
 </code></pre>
 
 <pre><code class="no-highlight">## [1] 10  3  5  8  1
 </code></pre>
 
-<pre><code class="r"># All even (or missing!) values of x
+<pre><code class="r"># Alle geraden (oder nicht fehlenden!) Werte von x
 x[x %% 2 == 0]
 </code></pre>
 
@@ -951,9 +947,9 @@ x[x %% 2 == 0]
   <article data-timings="">
     
 <div class="quiz-text quiz-multitext well">
-  <p>Ein Vektor <strong>x</strong> enthält 20 zufällige Zahlen im Bereich zwischen 1 - 1000:</p>
+  <p>Ein Vektor <strong>x</strong> enthält 20 zufällige Zahlen im Bereich 1 - 1000:</p>
 
-<pre><code class="r">set.seed(1) # (= state of the Random Number Generator set to 1)
+<pre><code class="r">set.seed(1) # (= Zustand des Random Number Generator wird auf 1 gesetzt)
 x &lt;- sample(1:1000, 20) 
 </code></pre>
 
@@ -962,7 +958,7 @@ x &lt;- sample(1:1000, 20)
 <ol>
 <li>Welche Zahl enthält das 5. Element in <strong>x</strong>?<br></li>
 <li>Was ist die Summe aus den ersten 4 Elementen?</li>
-<li>Was ist die Summe von <strong>x</strong> wenn das 3. und 15. ELement ausgeschlossen werden?</li>
+<li>Was ist die Summe von <strong>x</strong> wenn das 3. und 15. Element ausgeschlossen werden?</li>
 </ol>
 
   <button class="quiz-submit btn btn-primary">Submit</button>
@@ -973,7 +969,7 @@ x &lt;- sample(1:1000, 20)
   <div class="quiz-explanation">
   <p>1.<code>x[5]</code><br>
 2.Summiere über die ersten 4 Elemente:<br>
-<code>sum(x[1:4])</code>or <code>sum(x[c(1,2,3,4)])</code><br>
+<code>sum(x[1:4])</code>oder <code>sum(x[c(1,2,3,4)])</code><br>
 3.Entferne Element 3 und 15 vor der Summenbildung: 
 <code>sum(x[c(-3, -15)])</code></p>
 
@@ -1004,12 +1000,12 @@ x &lt;- sample(1:1000, 20)
   <article data-timings="">
     
 <div class="quiz quiz-single well ">
-  <p>Was passiert wenn mit einer positiven integer Zahl induziert wird die höher ist als die Länge des Vektors?</p>
+  <p>Was passiert wenn mit einer positiven integer Zahl induziert wird, die höher ist als die Länge des Vektors?</p>
 
 <ol>
 <li>Fehlermeldung</li>
 <li>Nichts</li>
-<li>Der Vektor wird recycled (z.B. wird das 2. Element bei einem Vektor der Länge 10 ausgegeben wenn der Index 12 ist)   and index value is a 12)</li>
+<li>Der Vektor wird recycled (z.B. wird das 2. Element bei einem Vektor der Länge 10 ausgegeben wenn der Index 12 ist)</li>
 <li><em>NA wird zurückgegeben</em></li>
 </ol>
 
@@ -1129,7 +1125,7 @@ a * b
 <h3>Rate</h3>
 
 <pre><code class="r">a &lt;- c(1,2,3,4)
-b &lt;- 10 # b gets recycled to the length of a
+b &lt;- 10 # b wird auf die Länge von a verlängert
 </code></pre>
 
 <pre><code class="r">a + b # = a[1] + b[1], a[2] + b[&quot;2&quot;], a[3] + b[&quot;3&quot;], a[4] + b[&quot;4&quot;]
@@ -1172,7 +1168,7 @@ b &lt;- 10 # b gets recycled to the length of a
   <article data-timings="">
     <ul>
 <li>Sind anders als atomare Vektoren weil ihre Elemente <strong>unterschiedliche Datentypen</strong> und auch <strong>Datenstrukturen</strong> haben dürfen.</li>
-<li>Werden mit<code>list()</code> anstelle von <code>c()</code> erstellt</li>
+<li>Werden mit <code>list()</code> anstelle von <code>c()</code> erstellt</li>
 </ul>
 
 <pre><code class="r">x &lt;- list(1:3, &quot;a&quot;, c(TRUE, FALSE, TRUE), c(2.3, 5.9))
@@ -1203,10 +1199,12 @@ str(x)
     <h2>Listen sind Vektoren</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="img/Hierarchy_vectors.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="450px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/Hierarchy_vectors.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="450px" style="display: block; margin: auto;" /></p>
 
-<p><code>NULL</code> steht für die Abwesenheit eines Vektors (im Gegensatz zu <code>NA</code> was sich auf die Elemente in einem Vektor bezieht)
-<code>NULL</code> verhält sich typischerweise wie ein Vektor der Länge 0. </p>
+<ul>
+<li><code>NULL</code> steht für die Abwesenheit eines Vektors (im Gegensatz zu <code>NA</code> was sich auf die Elemente in einem Vektor bezieht)</li>
+<li><code>NULL</code> verhält sich typischerweise wie ein Vektor der Länge 0. </li>
+</ul>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1222,10 +1220,10 @@ str(x)
 </slide>
 <slide class="" id="slide-39" style="background:;">
   <hgroup>
-    <h2>WWarum wird eine Liste als Vektor betrachtet?</h2>
+    <h2>Warum wird eine Liste als Vektor betrachtet?</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="img/ListsVsAtomicVectors.png" title="plot of chunk unnamed-chunk-32" alt="plot of chunk unnamed-chunk-32" width="900px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/ListsVsAtomicVectors.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="900px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1245,7 +1243,7 @@ str(x)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>are sometimes called <strong>recursive Vektors</strong>, because a list can contain other lists. </li>
+<li>Werden manchmal <strong>rekursive Vektoren</strong> bezeichnet weil eine Liste weitere Listen enthalen kann. </li>
 </ul>
 
 <pre><code class="r">x &lt;- list(list(list(list())))
@@ -1392,13 +1390,13 @@ str(x_named)
     
 <div style='float:left;width:48%;'>
   <ul>
-<li><strong>Matrizen</strong> sind 2-dimensionale atomare Vektoren (alle Elemente müssen den gleichen Datentyp haben), die vor allem in der numerischen Modellierung verwendet werden
-_ <strong>Arrays</strong> sind multidimensionale atomare Vektoren, werden in der Datenanalyse aber weniger genutzt</li>
+<li><strong>Matrizen</strong> sind 2-dimensionale atomare Vektoren (alle Elemente müssen den gleichen Datentyp haben), die vor allem in der numerischen Modellierung verwendet werden.</li>
+<li><strong>Arrays</strong> sind multidimensionale atomare Vektoren, werden in der Datenanalyse aber weniger genutzt.</li>
 </ul>
 
 </div>
 <div style='float:right;width:48%;'>
-  <p><img src="img/Arrays.jpg" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="500px" style="display: block; margin: auto;" /></p>
+  <p><img src="img/Arrays.jpg" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="500px" style="display: block; margin: auto;" /></p>
 
 </div>
     <footer>
@@ -1418,7 +1416,7 @@ _ <strong>Arrays</strong> sind multidimensionale atomare Vektoren, werden in der
     <h2>Data frames</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="img/Data_frames.png" style="width:250px;border:0;position: absolute; left: 700px; top: 100px" </img> </p>
+    <p><img src="img/Data_frames.png" style="width:250px;border:0;position: absolute; left: 775px; top: 75px" </img> </p>
 
 <ul>
 <li>Die <strong>gebräuchlichste</strong> Datenstruktur zum Speichern von Daten in R.</li>
@@ -1427,7 +1425,7 @@ _ <strong>Arrays</strong> sind multidimensionale atomare Vektoren, werden in der
 <ul>
 <li>→ dadurch 2-dimensionale Struktur</li>
 </ul></li>
-<li>Sehr flexibel da sie die gleichen Eigenschaften wie eine Liste und Matrix besitzt</li>
+<li>Sehr flexibel da sie die gleichen Eigenschaften wie eine Liste und Matrix besitzt.</li>
 </ul>
 
     <footer>
@@ -1487,7 +1485,7 @@ str(df)
 </code></pre>
 
 <ul>
-<li>Achte auf das <code>data.frame()</code>s vehalten beim Einlesen von strings, welche zu <strong>Faktoren</strong> umgewandelt werden. Mit <code>stringsAsFactors = FALSE</code> kann man dies unterdrücken:</li>
+<li>Achte auf das Verhalten von <code>data.frame()</code> beim Einlesen von strings: diese werden zu <strong>Faktoren</strong> automatisch umgewandelt. Mit dem Argument <code>stringsAsFactors = FALSE</code> kann man dies unterdrücken:</li>
 </ul>
 
 <pre><code class="r">df &lt;- data.frame(x = 1:3, y = c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), stringsAsFactors = FALSE)
@@ -1600,10 +1598,9 @@ df
     <h2>Induzieren von data frames (Matrix-artig): &#39;[rows,columns]&#39;</h2>
   </hgroup>
   <article data-timings="">
-    <p>Es wird für <strong>jede</strong> Dimension mit einem <strong>1d index</strong> getrennt durch ein Komma angegeben(<em>integer, logical, or character</em> Indizes sind erlaubt). </p>
-
-<ul>
-<li><strong>Leere Indizes</strong> sind erlaubt um alle Zeilen bzw. SPalten auszuwählen.</li>
+    <ul>
+<li>Es wird <strong>jede</strong> Dimension mit einem <strong>1d index</strong> getrennt durch ein Komma angegeben (<em>integer, logical, or character</em> Indizes sind erlaubt). </li>
+<li><strong>Leere Indizes</strong> sind erlaubt um alle Zeilen bzw. Spalten auszuwählen.</li>
 </ul>
 
 <div style='float:left;width:48%;'>
@@ -1613,7 +1610,7 @@ df
 df[1:2, 2] 
 </code></pre>
 
-<p><small>(1:2 ist ein shortcut for<br><code>seq(from = 1, to = 2, by = 1)</code></small></p>
+<p><small>(1:2 ist ein shortcut für<br><code>seq(from = 1, to = 2, by = 1</code></small>)</p>
 
 </div>
 <div style='float:right;width:48%;'>
@@ -1622,7 +1619,7 @@ df[1:2, 2]
 <pre><code class="r">df[ , c(&quot;x_neu&quot;) ] 
 </code></pre>
 
-<p><strong>Rate welche Werte ausgegeben werden?</strong></p>
+<p><strong>Rate, welche Werte ausgegeben werden!</strong></p>
 
 </div>
     <footer>
@@ -1642,10 +1639,9 @@ df[1:2, 2]
     <h2>Induzieren von data frames (Matrix-artig): &#39;[rows,columns]&#39;</h2>
   </hgroup>
   <article data-timings="">
-    <p>Es wird für <strong>jede</strong> Dimension mit einem <strong>1d index</strong> getrennt durch ein Komma angegeben(<em>integer, logical, or character</em> Indizes sind erlaubt). </p>
-
-<ul>
-<li><strong>Leere Indizes</strong> sind erlaubt um alle Zeilen bzw. SPalten auszuwählen.</li>
+    <ul>
+<li>Es wird <strong>jede</strong> Dimension mit einem <strong>1d index</strong> getrennt durch ein Komma angegeben (<em>integer, logical, or character</em> Indizes sind erlaubt). </li>
+<li><strong>Leere Indizes</strong> sind erlaubt um alle Zeilen bzw. Spalten auszuwählen.</li>
 </ul>
 
 <div style='float:left;width:48%;'>
@@ -1655,7 +1651,7 @@ df[1:2, 2]
 df[1:2, 2] 
 </code></pre>
 
-<p><small>(1:2 ist ein shortcut for<br><code>seq(from = 1, to = 2, by = 1)</code></small></p>
+<p><small>(1:2 ist ein shortcut für<br><code>seq(from = 1, to = 2, by = 1</code></small>)</p>
 
 </div>
 <div style='float:right;width:48%;'>
@@ -1685,7 +1681,7 @@ df[1:2, 2]
     <h2>Induzieren von data frames (Listen-artig): &#39;$&#39;</h2>
   </hgroup>
   <article data-timings="">
-    <p><code>$</code> ist eine *<em>shorthand Notation zum extrahieren von benannten</em> Elementen in einem data frame:</p>
+    <p><code>$</code> ist eine <strong>shorthand Notation</strong> zum Extrahieren von benannten Elementen in einem data frame:</p>
 
 <pre><code class="r">df$x_neu
 </code></pre>
@@ -1950,7 +1946,7 @@ df
 
 </div>
 <div class="quiz-explanation">
-  <p><code>iris</code> ist ein data frame da es 2-dimensional ist und die Variablen unterschiedliche Dtaentypen aufweisen.</p>
+  <p><code>iris</code> ist ein data frame da es 2-dimensional ist und die Variablen unterschiedliche Datentypen aufweisen.</p>
 
 </div>
 </div>
@@ -1976,8 +1972,8 @@ df
   <p>Wieviele Dimensionen hat <code>iris</code>?</p>
 
 <ol>
-<li>5 rows, 150 columns</li>
-<li><em>150 rows, 5 columns</em></li>
+<li>5 Zeilen, 150 Spalten</li>
+<li><em>150 Zeilen, 5 Spalten</em></li>
 </ol>
 
   <button class="quiz-submit btn btn-primary">Submit</button>
@@ -1986,7 +1982,7 @@ df
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-hint">
-  <p><small>Use the <code>nrow()</code> and <code>ncol()</code> functions to answer this question.</small></p>
+  <p><small>Verwende die <code>nrow()</code> und <code>ncol()</code> Funktionen.</small></p>
 
 </div>
 </div>
@@ -2009,7 +2005,7 @@ df
   <article data-timings="">
     
 <div class="quiz quiz-multiple well" data-individual>
-  <p>Welchen Datentypen gibt es im Datensatz <code>iris</code>?</p>
+  <p>Welchen Datentypen gibt es im Datensatz <code>iris</code> (Mehrfachnennungen möglich)?</p>
 
 <ol>
 <li>logical</li>
@@ -2030,7 +2026,7 @@ df
 
 </div>
 <div class="quiz-explanation">
-  <p>Die ersten 4 Spalten sind vom Typ double, die letzte Spalte ist vom Typ character mit zusätzlichen ATtributen (daher Faktor).</p>
+  <p>Die ersten 4 Spalten sind vom Typ double, die letzte Spalte ist vom Typ character mit zusätzlichen Attributen (daher Faktor).</p>
 
 </div>
 </div>
@@ -2076,7 +2072,7 @@ df
     <h2>Total konfus?</h2>
   </hgroup>
   <article class = 'flexbox vcenter'>
-    <p><img src="img/Comic_confused.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" width="400px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/Comic_confused.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" width="400px" style="display: block; margin: auto;" /></p>
 
 <p>Versuche das <a href="https://campus.datacamp.com/courses/free-introduction-to-r/chapter-1-intro-to-basics-1?ex=1">online tutorial auf Data Camp</a></p>
 
@@ -2097,13 +2093,13 @@ df
     <h2>Total gelangweilt?</h2>
   </hgroup>
   <article class = 'flexbox vcenter'>
-    <p><img src="img/Comic_bored.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" width="800px" style="display: block; margin: auto auto auto 0;" /></p>
+    <p><img src="img/Comic_bored.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" width="800px" style="display: block; margin: auto auto auto 0;" /></p>
 
 <p>Dann probiere folgendes: Berechne für den <code>iris</code> Datensatz</p>
 
 <ul>
-<li>die mittlere Länge der Sepal- und Petalblattlänge pro Art</li>
-<li>die kürzeste Petal Länge für &#39;setosa&#39;</li>
+<li>die mittlere Länge der Sepal- und Petalblatt-Länge pro Art</li>
+<li>die kürzeste Petalblatt-Länge für &#39;setosa&#39;</li>
 <li>Welche Art hat die längste Sepalblatt-Länge?</li>
 </ul>
 
@@ -2126,7 +2122,7 @@ df
   <article data-timings="">
     <p>Dann hol Dir einen Kaffee, lehn Dich zurück und genieße den Rest des Tages...!</p>
 
-<p><img src="img/Comic_hammock.png" title="plot of chunk unnamed-chunk-58" alt="plot of chunk unnamed-chunk-58" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="img/Comic_hammock.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" width="600px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -2186,7 +2182,7 @@ df
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='The einfachste Sruktur: atomare Vektoren'>
+        data-slide=2 title='Die einfachste Sruktur: atomare Vektoren'>
          2
       </a>
     </li>
@@ -2276,7 +2272,7 @@ df
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='2. Recycling Regeln'>
+        data-slide=17 title='2. Recycling Regel'>
          17
       </a>
     </li>
@@ -2408,7 +2404,7 @@ df
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='WWarum wird eine Liste als Vektor betrachtet?'>
+        data-slide=39 title='Warum wird eine Liste als Vektor betrachtet?'>
          39
       </a>
     </li>

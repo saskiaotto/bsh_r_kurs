@@ -72,7 +72,7 @@
 </slide>
 <slide class="" id="slide-2">
   <hgroup>
-    <h3>Data science erfordert eine Mischung an Fähigkeiten in 3 Hauptgebieten:</h3>
+    <h3>Data science erfordert Fähigkeiten in 3 Hauptgebieten:</h3>
   </hgroup>
   <article class = 'flexbox vcenter'>
     <p><img src="img/Data_science_1.png" style="height:480px;border:0;position: absolute; left: 262.5px; top: 157.5px" </img> </p>
@@ -224,13 +224,13 @@
     <p><img src="img/Rstudio_logo.jpg" style="height:60px;border:0;position: absolute; left:340px; top: 40px" </img> </p>
 
 <ul>
-<li>Ein Software Programm mit einer GUI für R (trademark of RStudio, Inc.).</li>
+<li>Eine Software mit einer GUI für R </li>
 <li>Hilft R Code zu schreiben und auszuführen und Daten zu analysieren.</li>
 <li>Integriert einen Texteditor mit einem Daten- und Paketmanager.</li>
 <li>Bietet Versionskontrollen, LaTeX Integration, keyboard shortcuts, und sog. debugging tools.</li>
 <li>Ist mittlerweile zum Standard bei R usern geworden.</li>
-<li>Es gibt die Software als frei verfügbare und als kommerzielle Version auf <a href="http://www.rstudio.com">www.rstudio.com</a></li>
-<li>Läuft lokal (Windows, Mac, and Linux) oder in einem Webbrowser der sich mit einem RStudio Server verbindet.</li>
+<li>Es gibt die Software als frei verfügbare und als kommerzielle Version auf <a href="http://www.rstudio.com">www.rstudio.com</a> (RStudio, Inc.).</li>
+<li>Läuft lokal (Windows, Mac und Linux) oder in einem Webbrowser, der sich mit einem RStudio Server verbindet.</li>
 </ul>
 
     <footer>
@@ -291,9 +291,9 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li><strong>Transparenz und Reproduzierbarkeit</strong> - Nicht nur die Resultate sind einsehbar sondern jeder einzelne Schritt der Analyse. </li>
+<li><strong>Transparenz und Reproduzierbarkeit</strong> - Nicht nur die Resultate sind einsehbar, sondern jeder einzelne Schritt der Analyse. </li>
 <li><strong>Flexibilität</strong> - Einige Analysen brauchen nur ein paar kleine Veränderungen bestehender R Skripte. </li>
-<li><strong>Austausch</strong> - Theoretisch sollte jeder R user Dein Skript verstehen um Code leichter auszutauschen.</li>
+<li><strong>Austausch</strong> - Theoretisch sollte jeder R user Dein Skript verstehen, so dass Code leichter austauschbar ist.</li>
 </ul>
 
     <footer>
@@ -321,7 +321,7 @@
 <ul>
 <li>Kopiere den Code Schnipsel und füge ihn in die Konsole ein (NICHT empfohlen!)</li>
 <li>Drück <strong>ctrl + enter</strong>  ➔ Ausführung des Codes der entsprechenden Zeile (wo der Cursor gerade ist); anschl. springt der Cursor eine Zeile weiter.</li>
-<li>Markiere den Code Abschnit (können mehrere Zeilen sein) der ausgeführt werden soll und drücke <strong>ctrl + enter</strong></li>
+<li>Markiere den Code Abschnitt (können mehrere Zeilen sein) der ausgeführt werden soll und drücke <strong>ctrl + enter</strong></li>
 </ul></li>
 </ul>
 
@@ -345,7 +345,7 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Folge einem style guide und wechsel nicht.</li>
+<li>Folge <strong>einem</strong> style guide und wechsel nicht.</li>
 <li>Jedes Skript sollte <strong>so kurz wie möglich</strong> und <strong>so komplex wie nötig</strong> sein.</li>
 <li>Verwende <strong>&quot;#&quot;</strong> um code auszukommentieren; mehrere Zeilen lassen sich mit cmd+shift+c auf einmal auskommentieren</li>
 <li>Anfangs wirst Du noch kommentieren was Du machst, später sollte es aber nur um das <strong>warum</strong> gehen.</li>
@@ -371,7 +371,7 @@
   <article data-timings="">
     <ul>
 <li>Variablenamen sollten <strong>Hauptwörter</strong>  und Funktionsnamen <strong>Verben</strong> sein.</li>
-<li>Objektnamen <strong>dürfen nicht</strong> mit einer <strong>Zahl</strong> beginnne.</li>
+<li>Objektnamen <strong>dürfen nicht</strong> mit einer <strong>Zahl</strong> beginnen.</li>
 <li>Verwende keine Sonderzeichen (z.B. !,/,%).</li>
 <li>Versuche keine Objektnahmen zu verwenden, die es bereits als Funktionsnamen gibt.</li>
 <li>Verwende <strong>Kleinbuchstaben</strong>.</li>
@@ -731,7 +731,7 @@ c &lt;- (a + sqrt(a))/(exp(2)+1)
   <article data-timings="">
     <p><img src="img/Prompt.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="800px" style="display: block; margin: auto;" /></p>
 
-<p>Wenn das sog. prompt Zeichen von <strong>&quot;&gt;&quot;</strong> zu <strong>&quot;+&quot;</strong> wechselt ist das ein Zeichen, dass der Befehl noch nicht zu Ende ist. Meist fehlen eine oder mehrere schließende Klammern. Führe entweder den Befehl zu Ende oder drücke (2mal) auf <strong>esc</strong>.</p>
+<p>Wenn das sog. prompt Zeichen von <strong>&quot;&gt;&quot;</strong> zu <strong>&quot;+&quot;</strong> wechselt, ist das ein Zeichen, dass der Befehl noch nicht zu Ende ist. Meist fehlen eine oder mehrere schließende Klammern. Führe entweder den Befehl zu Ende oder drücke (2mal) auf <strong>esc</strong>.</p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -753,7 +753,7 @@ c &lt;- (a + sqrt(a))/(exp(2)+1)
     <ul>
 <li>Funktionen sind das Herzstück von R</li>
 <li>Sie bestehen aus einem <strong>Codeblock</strong> welcher R <strong>Instruktionen</strong> übergibt.</li>
-<li>Einige Funktionen sind in R&#39;s <strong>Basispketen</strong> enthalten, andere sind erst durch die Installation und das Laden bestimmter Zusatzpakete verfügbar.</li>
+<li>Einige Funktionen sind in R&#39;s <strong>Basispaketen</strong> enthalten, andere sind erst durch die Installation und das Laden bestimmter Zusatzpakete verfügbar.</li>
 <li>R Funktionen arbeiten ähnlich wie Funktionen in anderen Programmen:</li>
 </ul>
 
@@ -775,7 +775,7 @@ c &lt;- (a + sqrt(a))/(exp(2)+1)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Funktionen sind das Herzstück von R</li>
+<li>Funktionen sind das Herzstück von R.</li>
 <li>Sie bestehen aus einem <strong>Codeblock</strong> welcher R <strong>Instruktionen</strong> übergibt.</li>
 <li>Einige Funktionen sind in R&#39;s <strong>Basispketen</strong> enthalten, andere sind erst durch die Installation und das Laden bestimmter Zusatzpakete verfügbar.</li>
 <li>R Funktionen arbeiten ähnlich wie Funktionen in anderen Programmen:</li>
@@ -812,7 +812,7 @@ c &lt;- (a + sqrt(a))/(exp(2)+1)
 help.search(&quot;mean&quot;)
 </code></pre>
 
-<p>Listet <strong>alle</strong> Funktionen welche das Wort &quot;mean&quot; enthalten:</p>
+<p>Listet <strong>alle</strong> Funktionen, welche das Wort &quot;mean&quot; enthalten:</p>
 
 <pre><code class="r">apropos(&quot;mean&quot;)
 </code></pre>
@@ -882,12 +882,12 @@ help.search(&quot;mean&quot;)
   <article data-timings="">
     
 <div class="quiz-text quiz-multitext well">
-  <p>Öffne ein neues Skript in Deinem RStudio und sichere es gleich unter einem Namen Deiner Wahl ab. Führe folgende Berechnungen durch und überprüfe Deine Ergebnisse indem Du sie in die Felder unten einträgst:</p>
+  <p>Öffne ein neues Skript in Deinem RStudio und sichere es gleich unter einem Namen Deiner Wahl ab. Führe folgende Berechnungen durch und überprüfe Deine Ergebnisse, indem Du sie in die Felder unten einträgst:</p>
 
 <ol>
 <li>Substrahiere 10 von 23, dann multipliziere mit 2.</li>
 <li>Substrahiere 10 von 23, dann multipliziere mit 2, dann addiere 100, dann teile alles durch 5.</li>
-<li>Substrahiere 23 von 10, dann multipliziere mit -10, dann nimm die Quadraturzel (verwende die <code>sqrt()</code> Funktion).</li>
+<li>Substrahiere 23 von 10, dann multipliziere mit -10, dann nimm die Quadratwurzel (verwende die <code>sqrt()</code> Funktion).</li>
 </ol>
 
   <button class="quiz-submit btn btn-primary">Submit</button>
@@ -896,7 +896,7 @@ help.search(&quot;mean&quot;)
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-hint">
-  <p><small>R berechnet Punkt- vor Strich. Um die Reihenfolge zu ändern setze entsprechend Klammern!</small></p>
+  <p><small>R berechnet Punkt vor Strich. Um die Reihenfolge zu ändern, setze entsprechend Klammern!</small></p>
 
 </div>
 <div class="quiz-explanation">
@@ -955,7 +955,7 @@ help.search(&quot;mean&quot;)
 <li>Dezimalzahlen wie <code>4.5</code> werden <strong>doubles</strong> genannt.</li>
 <li>Natürliche ganze Zahlen wie <code>4</code> werden <strong>integers</strong> genannt. Integers und doubles sind beides <strong>numerics</strong>. </li>
 <li>Boolean Werte (<code>TRUE</code> or <code>FALSE</code>) werden <strong>logical</strong> genannt.</li>
-<li>Text (oder Zeichenketten) werdn <strong>characters</strong> genannt.</li>
+<li>Text (oder Zeichenketten) werden <strong>characters</strong> genannt.</li>
 </ul>
 
     <footer>
@@ -1079,7 +1079,7 @@ is.double(dbl_var)
     <h2>Auf Datentypen testen (Forts.)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Overview of &#39;is.&#39; functions </p>
+    <p>Überblick der &#39;is.&#39; Funktionen</p>
 
 <table><thead>
 <tr>
@@ -1151,7 +1151,7 @@ is.double(dbl_var)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Fehlende Werte werden durch <code>NA</code> angezeigt</li>
+<li>Fehlende Werte werden durch <code>NA</code> angezeigt.</li>
 <li><code>NA</code> nimmt immer den Datentyp der anderen Elemente an, auch wenn das meist nicht sichtbar ist:</li>
 </ul>
 
@@ -1162,7 +1162,7 @@ NA_character_ # character
 </code></pre>
 
 <ul>
-<li>Du kannst mit <code>is.na()</code> prüfen ob ein Element ein NA ist</li>
+<li>Du kannst mit <code>is.na()</code> prüfen, ob ein Element ein NA ist:</li>
 </ul>
 
 <pre><code class="r">x &lt;- NA
@@ -1243,7 +1243,7 @@ is.na(x)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Data science erfordert eine Mischung an Fähigkeiten in 3 Hauptgebieten:'>
+        data-slide=2 title='Data science erfordert Fähigkeiten in 3 Hauptgebieten:'>
          2
       </a>
     </li>
