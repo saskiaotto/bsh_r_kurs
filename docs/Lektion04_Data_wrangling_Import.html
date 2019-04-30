@@ -77,8 +77,8 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>ein Konzept was von <strong>Hadley Wickam</strong> eingeführt wurde</li>
-<li>die Kunst <strong>Daten in R so zu laden und umzuformen</strong>, dass damit leicht die anschl. Visualisierung und Modellierung erfolgen kann</li>
+<li>ein Konzept, welches von <strong>Hadley Wickam</strong> eingeführt wurde</li>
+<li>die Kunst, <strong>Daten in R so zu laden und umzuformen</strong>, dass damit leicht die anschl. Visualisierung und Modellierung erfolgen kann</li>
 <li>besteht aus <strong>drei</strong> Hauptkompontenen:</li>
 </ul>
 
@@ -96,19 +96,19 @@
 </slide>
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Data wrangling is</h2>
+    <h2>Data wrangling ist</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>ein Konzept was von <strong>Hadley Wickam</strong> eingeführt wurde</li>
-<li>die Kunst <strong>Daten in R so zu laden und umzuformen</strong>, dass damit leicht die anschl. Visualisierung und Modellierung erfolgen kann</li>
-<li>besteht aus <strong>drei</strong> Hauptkompontenen:</li>
+<li>ein Konzept, welches von <strong>Hadley Wickam</strong> eingeführt wurde</li>
+<li>die Kunst, <strong>Daten in R so zu laden und umzuformen</strong>, dass damit leicht die anschl. Visualisierung und Modellierung erfolgen kann</li>
+<li>besteht aus <strong>drei</strong> Hauptkomponenten:</li>
 </ul>
 
 <div class="img-with-text" style="position: absolute; left: 125px; top: 300px">
     <img src="img/Data_wrangling.png" alt="" width=800px/>
- <p><span class="source-img" style = "float:right">source of flowchart: 
-    <a href='http://r4ds.had.co.nz/wrangle-intro.html' title=''>R for Data Science</a> by Wickam & Grolemund, 2017 (licensed under <a href='https://creativecommons.org/licenses/by-nc-nd/3.0/us/' title=''>CC-BY-NC-ND 3.0 US</a>)</span></p>
+ <p><span class="source-img" style = "float:right">Quelle: 
+    <a href='http://r4ds.had.co.nz/wrangle-intro.html' title=''>R for Data Science</a> von Wickam & Grolemund, 2017 (lizensiert unter <a href='https://creativecommons.org/licenses/by-nc-nd/3.0/us/' title=''>CC-BY-NC-ND 3.0 US</a>)</span></p>
 </div>
 
     <footer>
@@ -128,7 +128,7 @@
     <h2>Tidy (uni)verse</h2>
   </hgroup>
   <article data-timings="">
-    <p>Ist eine Sammling von <strong>R Oaketen</strong> die die <strong>gleiche Philosophie</strong> teilen und auf einander abgestimmt sind:</p>
+    <p>Ist eine Sammlung von <strong>R Paketen</strong> die die <strong>gleiche Philosophie</strong> teilen und auf einander abgestimmt sind:</p>
 
 <p><img src="img/Tidyverse_packages.png" style="width:1000px;border:0;position: absolute; left: 50px; top: 200px" </img> </p>
 
@@ -150,16 +150,16 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li><strong>Konsistenz</strong>
+<li><strong>Konsistenz</strong>, z.B.
 
 <ul>
-<li>z.B. alle <em>stringr</em> Funktionen nehmen einen string als erstes Argument</li>
-<li>z.B. die meisten Funktionen nehmen den data frame als erstes Argument (piping)</li>
+<li>alle <em>stringr</em> Funktionen nehmen einen string als erstes Argument</li>
+<li>die meisten Funktionen nehmen den data frame als erstes Argument (piping)</li>
 </ul></li>
 <li>Es zwingt zu einer <strong>sorgfältigen Vorgehensweise</strong></li>
-<li><strong>Synergien</strong> zwischen verschiedenen Paktenen/tools</li>
-<li>Implementiert <strong>einfache Lösungen</strong> zu allgemeinenen Problemen</li>
-<li><strong>Smartere default</strong> Einfstellung
+<li><strong>Synergien</strong> zwischen verschiedenen Paketen/tools</li>
+<li>Implementiert <strong>einfache Lösungen</strong> zu allgemeinen Problemen</li>
+<li><strong>Smartere default</strong> Einstellungen
 
 <ul>
 <li>z.B. <code>utils::write.csv(row.names = FALSE)</code>, <code>readr::write_csv()</code></li>
@@ -184,9 +184,8 @@
   <article data-timings="">
     <p>Am einfachsten ist die Installation (und das spätere Laden) eines einzigen Paketes, welches alle weiteren installiert</p>
 
-<blockquote>
-<p><code>install.packages(&quot;tidyverse&quot;)</code></p>
-</blockquote>
+<pre><code class="r">install.packages(&quot;tidyverse&quot;)
+</code></pre>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -221,7 +220,7 @@
 <ul>
 <li> R <strong>Funktionen</strong>, </li>
 <li>der <strong>Dokumentation</strong> die beschreibt wie die Funktionen anzuwenden sind, </li>
-<li>und oft auch <strong>Beispieldatan</strong></li>
+<li>und oft auch <strong>Beispieldaten</strong></li>
 </ul></li>
 <li>Die offizielle <a href="https://cran.r-project.org/">CRAN package Webseite</a> enthält aktuell <strong>13700 (!)</strong> Pakete (Feb 10, 2019)</li>
 </ul>
@@ -243,14 +242,14 @@
     <h2>Installation (EINMALIG)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Die &#39;akzptierte&#39; Version kann von CRAN direkt über die Funktion <code>install.packages()</code> installiert werden</p>
+    <p>Die &#39;akzeptierte&#39; Version kann von CRAN direkt über die Funktion <code>install.packages()</code> installiert werden</p>
 
 <pre><code class="r">install.packages(&quot;package_name&quot;)
 </code></pre>
 
-<p>or via R Studio:</p>
+<p>oder via R Studio:</p>
 
-<p><img src="img/Package_installation.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="500px" style="display: block; margin: auto;" /></p>
+<p><img src="img/Package_installation.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="500px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -269,7 +268,7 @@
     <h2>Paket laden (JEDE SESSION)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Ein Paket muss für jede session geladen werden um auf die Funktionen zugreifen zu können. Dazu gibt es <code>library()</code> und <code>require()</code>. R überprüft dann erstmal, ob dieses Paket auch installiert. Der Unterschied zwischen beiden Funktionen ist nur was passiert, wenn das Paket nicht vorhanden ist:</p>
+    <p>Ein Paket muss für jede session geladen werden, um auf die Funktionen zugreifen zu können. Dazu gibt es <code>library()</code> und <code>require()</code>. R überprüft dann erstmal, ob dieses Paket auch installiert ist. Der Unterschied zwischen beiden Funktionen liegt nur in dem was passiert, wenn das Paket nicht vorhanden ist:</p>
 
 <pre><code class="r">library(any_package) # library(&quot;any_package&quot;) would also work
 </code></pre>
@@ -298,14 +297,14 @@
   </hgroup>
   <article data-timings="">
     <p>Wenn ein spezifisches Paket geladen wird, wird es als default zum Suchpfad hinzugefügt:
-<img src="img/Search_paths.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="500px" style="display: block; margin: auto;" /></p>
+<img src="img/Search_paths.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="500px" style="display: block; margin: auto;" /></p>
 
-<p><span class="source-img" style="position: absolute; left: 625px; top: 340px">modified from 
-    <a href='http://adv-r.had.co.nz/Environments.html' title=''>Advanced R</a> by H. Wickam, 2014</span></p>
+<p><span class="source-img" style="position: absolute; left: 625px; top: 340px">modifiziert von 
+    <a href='http://adv-r.had.co.nz/Environments.html' title=''>Advanced R</a> von H. Wickam, 2014</span></p>
 
 <ul>
-<li>Um eine Funktion aufrufen zu können, muss R sie erstmal finden. Dafür sucht als <strong>erstes</strong> in der <strong>globalen Umgebung</strong>.</li>
-<li>Anschl. sucht R im <strong>Suchfad</strong>, also der Liste aller geladenen Pakete, in einer spezifischen Reihenfolge.</li>
+<li>Um eine Funktion aufrufen zu können, muss R sie erstmal finden. Dafür sucht R als <strong>erstes</strong> in der <strong>globalen Umgebung</strong>.</li>
+<li>Anschl. sucht R im <strong>Suchpfad</strong>, also der Liste aller geladenen Pakete, und zwar in einer spezifischen Reihenfolge.</li>
 <li>Wenn R mehrere Funktionen mit dem gleichen Namen findet, verwendet es die Funktion des <strong>zuletzt</strong> geladenen Pakets.</li>
 </ul>
 
@@ -356,8 +355,8 @@
 <pre><code class="r">library(tidyverse) 
 </code></pre>
 
-<p>siehst Du 8 weitere tidyverse Hauptpakete packages die geladen wurden.
-Du siehst auch einen <strong>Konflict mit Funktionsnamen</strong> (<code>filter()</code> und <code>lag()</code> existieren in 2 Paketen)!</p>
+<p>siehst Du 8 weitere tidyverse Pakete die geladen wurden.
+Du siehst auch einen <strong>Konflikt mit Funktionsnamen</strong> (<code>filter()</code> und <code>lag()</code> existieren in 2 Paketen)!</p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -406,15 +405,14 @@ Du siehst auch einen <strong>Konflict mit Funktionsnamen</strong> (<code>filter(
     <h2>Wie kann man Pakete aus der Session inaktivieren?</h2>
   </hgroup>
   <article data-timings="">
-    <p>Pakete werden aus dem Suchpfad einfach entfernt mit <code>detach()</code></p>
+    <p>Pakete werden aus dem Suchpfad einfach mit <code>detach()</code> entfernt</p>
 
-<blockquote>
-<p><code>detach(packagename)</code></p>
-</blockquote>
+<pre><code class="r">detach(packagename)
+</code></pre>
 
 <p>Oder indem die Box neben dem Paketnamen im &#39;Packages&#39; pane entfernt wird:</p>
 
-<p><img src="img/Detach_packages.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="900px" style="display: block; margin: auto auto auto 0;" /></p>
+<p><img src="img/Detach_packages.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="900px" style="display: block; margin: auto auto auto 0;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -434,9 +432,9 @@ Du siehst auch einen <strong>Konflict mit Funktionsnamen</strong> (<code>filter(
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Wenn Du <code>?packagename</code>  (z.B. <code>?tidyverse</code>) aufrufst, erhältst Du weitere Informationen zu dem was das Paket kann und welche Funktionen verfügbar sind. Manchmal gibt es auch weblinks für weitere Infos.</li>
+<li>Wenn Du <code>?packagename</code>  (z.B. <code>?tidyverse</code>) aufrufst, erhältst Du weitere Informationen zu den Kernaufgaben des Pakets kann und welche Funktionen verfügbar sind. Manchmal gibt es auch Weblinks für weitere Infos.</li>
 <li>Aktuellere Pakete haben auch sog. &quot;Vignetten&quot;, welche ein kleines Tutorial darstellen. Diese können aufgerufen werden über <code>vignette(&quot;packagename&quot;)</code>.</li>
-<li>Machmal gibt es sogar mehrere Vignettten. Für einen Überblick verwende <code>browseVignettes(&quot;packagename&quot;)</code>.</li>
+<li>Machmal gibt es sogar mehrere Vignetten. Für einen Überblick verwende <code>browseVignettes(&quot;packagename&quot;)</code>.</li>
 </ul>
 
 <pre><code class="r">vignette(&quot;dplyr&quot;)
@@ -465,7 +463,7 @@ browseVignettes(&quot;dplyr&quot;)
 </slide>
 <slide class="" id="slide-18" style="background:#EEC900;">
   <hgroup>
-    <h1>Quiz 1: Function conflicts</h1>
+    <h1>Quiz 1: Funktionskonflikte</h1>
   </hgroup>
   <article data-timings="">
     
@@ -483,7 +481,7 @@ browseVignettes(&quot;dplyr&quot;)
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-explanation">
-  <p><code>dplyr</code> wurde nach<code>stats</code> (wird mit jeder session automatisch von R geladen) geladen, daher kommt <code>dplyr</code> auch vor <code>stats</code> im Suchpfad (Position 2 vs 10).</p>
+  <p><code>dplyr</code> wurde NACH<code>stats</code> (welches mit jeder session automatisch von R geladen wird) geladen, daher kommt <code>dplyr</code> auch vor <code>stats</code> im Suchpfad (Position 2 vs 10).</p>
 
 </div>
 </div>
@@ -516,7 +514,7 @@ browseVignettes(&quot;dplyr&quot;)
   <article data-timings="">
     <ul>
 <li>Excel Dateien (.xls / .xlsx)</li>
-<li>Komma separierte Werte (.csv) --&gt; gebräuchlichsten Dateien</li>
+<li>Komma-separierte Werte (.csv) --&gt; gebräuchlichster Dateityp</li>
 <li>Textdateien (.txt)</li>
 <li>NetCDF (Network Common Data Form)</li>
 <li>Relationale Datenbanken (MySQL, PostgreSQL, etc.)</li>
@@ -525,7 +523,7 @@ browseVignettes(&quot;dplyr&quot;)
 </ul>
 
 <div class="alert alert-green" style="margin-left: auto; margin-right: auto;">
-  Moeistens wirst Du flache Dateien haben die Du in R laden willst (sprich ohne <strong>internen Hierarchien</strong> and Beziehungen wie in Datenbanken).
+  Meistens wirst Du flache Dateien haben die Du in R laden willst (sprich ohne <strong>interne Hierarchien</strong> and Beziehungen wie in Datenbanken).
 </div>
 
     <footer>
@@ -545,7 +543,7 @@ browseVignettes(&quot;dplyr&quot;)
     <h2>Import aus Excel</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="img/Excel_import.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="850px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/Excel_import.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="850px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -591,13 +589,13 @@ browseVignettes(&quot;dplyr&quot;)
 </div>
 
 <ul>
-<li>Die meisten readr’s Funktionen sind zum Importeren flacher Dateien in data frames bzw. sog. <code>tibbles</code>:
+<li>Die meisten readr’s Funktionen sind zum Importieren flacher Dateien in data frames bzw. sog. <code>tibbles</code>:
 
 <ul>
 <li><code>read_delim()</code>: liest Dateien mit <strong>jedem delimiter</strong> ein.</li>
-<li><code>read_csv()</code>: <strong>Kommma</strong> separierte Dateien (.csv)</li>
-<li><code>read_csv2()</code>: <strong>Semicolon</strong> separierte Dateien (.csv) - Gebräuchlich wenn das Komma als Dezimalzeichen verwendet wird</li>
-<li><code>read_tsv()</code>: <strong>tab</strong> delimited Dateien (.txt files)</li>
+<li><code>read_csv()</code>: <strong>Komma</strong>-separierte Dateien (.csv)</li>
+<li><code>read_csv2()</code>: <strong>Semikolon</strong>-separierte Dateien (.csv) - Gebräuchlich wenn das Komma als Dezimalzeichen verwendet wird</li>
+<li><code>read_tsv()</code>: <strong>Tab</strong> delimited Dateien (.txt files)</li>
 <li>weitere <code>read_table()</code>,<code>read_fwf()</code>, <code>read_log()</code></li>
 </ul></li>
 </ul>
@@ -620,7 +618,7 @@ browseVignettes(&quot;dplyr&quot;)
 <li>All diese Funktionen haben eine ähnliche oder die gleiche Syntax: </li>
 </ul>
 
-<p><img src="img/Readr_functions.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="1000px" style="display: block; margin: auto auto auto 0;" /></p>
+<p><img src="img/Readr_functions.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="1000px" style="display: block; margin: auto auto auto 0;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -639,7 +637,7 @@ browseVignettes(&quot;dplyr&quot;)
     <h2>Eine kurze Demonstration von read_csv mit inline csv Dateien</h2>
   </hgroup>
   <article data-timings="">
-    <p>Inline csv Dateien sind ganz praktisch zum experimentieren und um nachvbollziehbare Beispiele zu erstellen: </p>
+    <p>Inline csv Dateien sind praktisch zum Experimentieren und um nachvollziehbare Beispiele zu erstellen: </p>
 
 <pre><code class="r">read_csv(&quot;a,b,c
 1,2,3
@@ -703,7 +701,7 @@ browseVignettes(&quot;dplyr&quot;)
   <article data-timings="">
     
 <div style='float:left;width:48%;'>
-  <p>Wenn die Datei keine Spaltennamen enthölt: <strong>col_names = FALSE</strong>; R vergibt dann die Labels X1 bis Xn:</p>
+  <p>Wenn die Datei keine Spaltennamen enthält: <strong>col_names = FALSE</strong>; R vergibt dann die Labels X1 bis Xn:</p>
 
 <pre><code class="r">read_csv(&quot;1,2,3
   4,5,6&quot;, col_names = FALSE)
@@ -718,7 +716,7 @@ browseVignettes(&quot;dplyr&quot;)
 
 </div>
 <div style='float:right;width:48%;'>
-  <p>Du kannst auch einen gesonderten <strong>character vector</strong> als col_names übergeben:</p>
+  <p>Du kannst auch einen gesonderten <strong>character Vektor</strong> als col_names übergeben:</p>
 
 <pre><code class="r">read_csv(&quot;1,2,3
   4,5,6&quot;, col_names = c(&quot;x&quot;, &quot;y&quot;, &quot;z&quot;))
@@ -749,7 +747,7 @@ browseVignettes(&quot;dplyr&quot;)
     <h3>Import optimieren - NAs</h3>
   </hgroup>
   <article data-timings="">
-    <p>Das Argument <code>na</code> spezifiziert die Werte die fehlende Werte repreäsentieren (z.B. sind -999 oder -9999 oft Platzhalter):</p>
+    <p>Das Argument <code>na</code> spezifiziert die Werte, die fehlende Werte repräsentieren (z.B. sind -999 oder -9999 oft Platzhalter):</p>
 
 <div style='float:left;width:48%;'>
   <pre><code class="r">read_csv(&quot;a,b,c
@@ -793,9 +791,9 @@ browseVignettes(&quot;dplyr&quot;)
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Das <strong>&#39;tibble&#39;</strong> Pakets ermöglicht eine neue <strong>&#39;tbl_df&#39;</strong> Klasse (das &#39;tibble&#39;) striktere checks bereit stellt und sich besser formatieren lässt als die traditionellen data frames. </li>
+<li>Das <strong>&#39;tibble&#39;</strong> Paket ermöglicht eine neue <strong>&#39;tbl_df&#39;</strong> Klasse (das &#39;tibble&#39;), welche striktere Qualitätschecks bereitstellt und sich besser formatieren lässt als die traditionellen data frames. </li>
 <li>Alle Funktionen für data frames funktionieren auch bei tibbles</li>
-<li>Alle Pakete generieren tibbles automatisch</li>
+<li>Alle tidyverse Pakete generieren tibbles automatisch</li>
 <li>Mehr zu tibbles gibt es hier: <code>vignette(&quot;tibble&quot;)</code>.</li>
 </ul>
 
@@ -813,13 +811,12 @@ browseVignettes(&quot;dplyr&quot;)
 </slide>
 <slide class="" id="slide-30" style="background:;">
   <hgroup>
-    <h2>Was sind eigentlich <strong>tibbles</strong>?</h2>
+    <h2>tibbles erstellen</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Functions for data frames will work also for tibbles.</li>
-<li>All tidyverse packages generate tibbles automatically</li>
-<li>To learn more check <code>vignette(&quot;tibble&quot;)</code>.</li>
+<li>Geschieht automatisch beim Import mit <em>readr</em></li>
+<li>Konvertiere einen bestehenden data frame mit <code>tibble::as_tibble(your_dataframe)</code></li>
 </ul>
 
     <footer>
@@ -844,6 +841,22 @@ browseVignettes(&quot;dplyr&quot;)
 <li>Konvertiere einen bestehenden data frame mit <code>tibble::as_tibble(your_dataframe)</code></li>
 </ul>
 
+<pre><code class="r">iris_tbl &lt;- as_tibble(iris)
+# Vergleiche mit
+class(iris)
+</code></pre>
+
+<pre><code class="no-highlight">## [1] &quot;data.frame&quot;
+</code></pre>
+
+<pre><code class="r">class(iris_tbl)
+</code></pre>
+
+<pre><code class="no-highlight">## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
+</code></pre>
+
+<p>Wie Du siehst, <strong>iris_tbl</strong> vererbt auch die <code>data.frame</code> Klasse, hat jetzt aber eine zusätzliche <code>tbl_df</code> Klasse.</p>
+
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
         <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
@@ -857,44 +870,6 @@ browseVignettes(&quot;dplyr&quot;)
   <!-- Presenter Notes -->
 </slide>
 <slide class="" id="slide-32" style="background:;">
-  <hgroup>
-    <h2>tibbles erstellen</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Geschieht automatisch beim Import mit <em>readr</em></li>
-<li>Konvertiere einen bestehenden data frame mit <code>tibble::as_tibble(your_dataframe)</code></li>
-</ul>
-
-<pre><code class="r">iris_tbl &lt;- as_tibble(iris)
-# Compare the difference:
-class(iris)
-</code></pre>
-
-<pre><code class="no-highlight">## [1] &quot;data.frame&quot;
-</code></pre>
-
-<pre><code class="r">class(iris_tbl)
-</code></pre>
-
-<pre><code class="no-highlight">## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
-</code></pre>
-
-<p>Wie Du siehst, <strong>iris_tbl</strong> vererbt auch die <code>data.frame</code> Klasse, hat jetzt aber eine zusätzliche <code>tbl_df</code> class.</p>
-
-    <footer>
-      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
-        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
-      </div>
-      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
-        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
-        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
-      </div>
-    </footer>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>tibbles erstellen (Forts.)</h2>
   </hgroup>
@@ -930,15 +905,15 @@ class(iris)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-34" style="background:;">
+<slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>Printen von tibbles</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>jede Spalte gibt ihren <strong>Datentyp</strong> mit an</li>
-<li>nur die ersten 10 <strong>10 Zeilen</strong> und alle Spalten die <strong>in den screen passen</strong> werden angezeigt --&gt; viel einfacher umzugehen mit großen Datensätzen</li>
-<li>Wenn Du die Anzeige der Zeilen (<strong>n</strong>) und Spalten (<strong>width</strong>) ändern willst benutze <code>print()</code> und ändere die Argumente:</li>
+<li>Jede Spalte gibt ihren <strong>Datentyp</strong> mit an</li>
+<li>Nur die ersten <strong>10 Zeilen</strong> und alle Spalten die <strong>in den Screen passen</strong> werden angezeigt → einfacheres handling bei großen Datensätzen</li>
+<li>Wenn Du die Anzeige der Zeilen (<strong>n</strong>) und Spalten (<strong>width</strong>) ändern willst, benutze <code>print()</code> und ändere die Argumente:</li>
 </ul>
 
     <footer>
@@ -953,18 +928,18 @@ class(iris)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-35" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>Printen von tibbles</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>jede Spalte gibt ihren <strong>Datentyp</strong> mit an</li>
-<li>nur die ersten 10 <strong>10 Zeilen</strong> und alle Spalten die <strong>in den screen passen</strong> werden angezeigt --&gt; viel einfacher umzugehen mit großen Datensätzen</li>
-<li>Wenn Du die Anzeige der Zeilen (<strong>n</strong>) und Spalten (<strong>width</strong>) ändern willst benutze <code>print()</code> und ändere die Argumente:</li>
+<li>Jede Spalte gibt ihren <strong>Datentyp</strong> mit an</li>
+<li>Nur die ersten <strong>10 Zeilen</strong> und alle Spalten die <strong>in den Screen passen</strong> werden angezeigt → einfacheres handling bei großen Datensätzen</li>
+<li>Wenn Du die Anzeige der Zeilen (<strong>n</strong>) und Spalten (<strong>width</strong>) ändern willst, benutze <code>print()</code> und ändere die Argumente:</li>
 </ul>
 
-<pre><code class="r">print(iris_tbl, n = 2, width = Inf)  # = Inf shows all columns
+<pre><code class="r">print(iris_tbl, n = 2, width = Inf)  # = Inf zeigt alle Spalten
 </code></pre>
 
 <pre><code class="no-highlight">## # A tibble: 150 x 5
@@ -987,7 +962,7 @@ class(iris)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-36" style="background:;">
+<slide class="" id="slide-35" style="background:;">
   <hgroup>
     <h2>Überblick an weiteren Funktionen:</h2>
   </hgroup>
@@ -995,7 +970,7 @@ class(iris)
     <div class="img-with-text" style="position: absolute; left: 200px; top: 100px">
     <img src="img/Cheatsheet_readr.png" alt="" width=675px/>
  <p><span class="source-img" style = "float:right">
- Cheat sheet is freely available at 
+ Das cheat sheet ist frei verfügbar auf 
  <a href='https://www.rstudio.com/resources/cheatsheets/' title=''>https://www.rstudio.com/resources/cheatsheets/</a></span></p>
 </div>
 
@@ -1011,18 +986,18 @@ class(iris)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-37" style="background:;">
+<slide class="" id="slide-36" style="background:;">
   <hgroup>
     <h2>Andere Datentypen</h2>
   </hgroup>
   <article data-timings="">
-    <p>Wenn Du weitere Datentypen hast die Du importieren willst könnten folgende Pakete nützlich sein:</p>
+    <p>Wenn Du weitere Datentypen hast die Du importieren willst, könnten folgende Pakete nützlich sein:</p>
 
 <ul>
 <li><strong>haven</strong> - SPSS, Stata, und SAS Dateien</li>
 <li><strong>readxl</strong> - Excel Dateien (.xls und .xlsx)</li>
 <li><strong>ncdf4</strong> or <strong>tidync</strong> - NetCDF (Network Common Data Form)</li>
-<li><strong>DBI</strong> - databases</li>
+<li><strong>DBI</strong> - Datenbanken</li>
 <li><strong>jsonlite</strong> - json</li>
 <li><strong>xml2</strong> - XML</li>
 <li><strong>httr</strong> - Web APIs</li>
@@ -1040,12 +1015,12 @@ class(iris)
   </article>
   <!-- Presenter Notes -->
 </slide>
-<slide class="" id="slide-38" style="background:;">
+<slide class="" id="slide-37" style="background:;">
   <hgroup>
     <h2>Roadmap</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src="img/Roadmap.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="1000px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/Roadmap.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="1000px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1068,9 +1043,25 @@ class(iris)
 
   </article>
 </slide>
+<slide class="" id="slide-39" style="background:;">
+  <article data-timings="">
+    <p><img src="img/ICES_webpage.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="800px" style="display: block; margin: auto;" /></p>
+
+    <footer>
+      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+      </div>
+      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+      </div>
+    </footer>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 <slide class="" id="slide-40" style="background:;">
   <article data-timings="">
-    <p><img src="img/ICES_webpage.png" title="plot of chunk unnamed-chunk-23" alt="plot of chunk unnamed-chunk-23" width="800px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/ICES_data_portal.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="800px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1086,7 +1077,7 @@ class(iris)
 </slide>
 <slide class="" id="slide-41" style="background:;">
   <article data-timings="">
-    <p><img src="img/ICES_data_portal.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" width="800px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/ICES_oceanographic_data.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="800px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1102,23 +1093,7 @@ class(iris)
 </slide>
 <slide class="" id="slide-42" style="background:;">
   <article data-timings="">
-    <p><img src="img/ICES_oceanographic_data.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="800px" style="display: block; margin: auto;" /></p>
-
-    <footer>
-      <div style="position: absolute; left: 60px; top: 645px; z-index:100">
-        <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
-      </div>
-      <div style="position: absolute; left: 100px; top: 650px; z-index:100">
-        <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
-        font-style: italic; top: 610px; ">Datenanalyse mit R</a>
-      </div>
-    </footer>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-<slide class="" id="slide-43" style="background:;">
-  <article data-timings="">
-    <p><img src="img/ICES_download.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="900px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/ICES_download.png" title="plot of chunk unnamed-chunk-28" alt="plot of chunk unnamed-chunk-28" width="900px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1140,31 +1115,58 @@ class(iris)
     
   </article>
 </slide>
-<slide class="" id="slide-45">
+<slide class="" id="slide-44">
 <hgroup>
   <h2>Import der ICES Daten</h2>
 </hgroup>
 <article data-timings="">
   <div style="background-color:#F5F5F5; text-align:left; vertical-align: middle; padding:20px 47px;">
     <ol>
-<li>Öffne deie Datei &quot;1111473b.csv&quot; in einem Editor Deiner Wahl und schau Dir den Inhalt an.</li>
-<li>Lade die Datei in R:
+<li>Öffne die Datei &quot;1111473b.csv&quot; in einem Editor Deiner Wahl und schau Dir den Inhalt an.</li>
+<li>Lade die Datei in R ein:
 
 <ul>
 <li>Setze zuerst das Arbeitsverzeichnis auf den Ordner, der die Datei einhält. </li>
 <li>Wähle die passende Importfunktion und die Argumenteinstellungen anhand des Inhalts und Dateiformats.</li>
-<li>Speichere die Daten als Objekt names <code>hydro</code> ab.</li>
+<li>Speichere die Daten unter dem Objektnamen <code>hydro</code> ab.</li>
 </ul></li>
-<li>Inspiziere <code>hydro</code>. 
+</ol>
+
+  </div>
+  <footer>
+    <div style="position: absolute; left: 60px; top: 645px; z-index:100">
+      <a class="home" href="https://mareds.github.io/r_course/"><img src="assets/img/mds_logo_128px.png" alt="Home button" style="width:35px;height:35px;border:0;"></a>
+    </div>
+    <div style="position: absolute; left: 100px; top: 650px; z-index:100">
+      <a href='https://saskiaotto.github.io/bsh_r_kurs/' style="font-size: 15px;
+      font-style: italic; top: 610px; ">Datenanalyse mit R</a>
+    </div>
+  </footer>
+</article>
+<!-- Presenter Notes -->
+</slide>
+
+<style>
+#slide-44 {
+  background-color: #EEC900;
+}
+</style>
+<slide class="" id="slide-45">
+<hgroup>
+  <h2>Import der ICES Daten</h2>
+</hgroup>
+<article data-timings="">
+  <div style="background-color:#F5F5F5; text-align:left; vertical-align: middle; padding:20px 47px;">
+    <p>3.Inspiziere <code>hydro</code>. </p>
 
 <ul>
-<li>Was für eine Datenstruktur ist <code>hydro</code>?</li>
+<li>Was für eine Datenstruktur hat <code>hydro</code>?</li>
 <li>Stimmen die Dimensionen?</li>
 <li>Was ist mit den leeren Elementen passiert (z.B. Zeile 127-137)</li>
 <li>Stimmen die Datentypen pro Zeile?</li>
-</ul></li>
-<li>Da die Spaltennamen ungeeignet sind, wähle hier passendere Namen.</li>
-</ol>
+</ul>
+
+<p>4.Da die Spaltennamen ungeeignet sind, wähle hier passendere Namen.</p>
 
   </div>
   <footer>
@@ -1190,14 +1192,14 @@ class(iris)
     <h2>Lass uns der Roadmap folgen:</h2>
   </hgroup>
   <article data-timings="">
-    <h3>1.Schritt: Öffne die Dateie in einem editor und checke den Inhalt</h3>
+    <h3>1.Schritt: Öffne die Dateien in einem Editor und überprüfe den Inhalt</h3>
 
 <p>In RStudio:</p>
 
 <ul class = "build incremental">
 <li>Gehe zum &#39;Files&#39; pane.</li>
 <li>Navigiere Dich zum Ordner mit der &#39;1111473b.csv&#39; Datei</li>
-<li>Klicke auf die Datei und wähle &quot;View file&quot; aus --&gt; jetzt wird die Datei im Source&#39; pane sichtbar</li>
+<li>Klicke auf die Datei und wähle &quot;View file&quot; aus → jetzt wird die Datei im Source&#39; pane sichtbar</li>
 </ul>
 
     <footer>
@@ -1214,7 +1216,7 @@ class(iris)
 </slide>
 <slide class="" id="slide-47" style="background:;">
   <article data-timings="">
-    <p><img src="img/Editor_data_check.png" title="plot of chunk unnamed-chunk-27" alt="plot of chunk unnamed-chunk-27" width="800px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/Editor_data_check.png" title="plot of chunk unnamed-chunk-29" alt="plot of chunk unnamed-chunk-29" width="800px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1233,11 +1235,11 @@ class(iris)
     <h2>Lass uns der Roadmap folgen:</h2>
   </hgroup>
   <article data-timings="">
-    <h3>1.Schritt: Lade die Daten in R ein</h3>
+    <h3>2.Schritt: Lade die Daten in R ein</h3>
 
 <ul>
-<li>Stelle sicher, dass das <strong>Arbeitsverzeichnis</strong> richtig ist. </li>
-<li>Die <strong>falsche</strong> working directory ist die <strong>häufigste Ursache</strong> für Fehlermeldunge!</li>
+<li>Stelle sicher, dass das <strong>Arbeitsverzeichnis</strong> (working directory) richtig ist. </li>
+<li>Das <strong>falsche</strong> Arbeitsverzeichnis ist die <strong>häufigste Ursache</strong> für Fehlermeldungen!</li>
 </ul>
 
 <pre><code class="r">hydro &lt;- read_csv(&quot;data/1111473b.csv&quot;)
@@ -1257,7 +1259,7 @@ class(iris)
 </slide>
 <slide class="" id="slide-49" style="background:;">
   <hgroup>
-    <h2>Check der Struktur</h2>
+    <h2>Überprüfe die Struktur</h2>
   </hgroup>
   <article data-timings="">
     <pre><code class="r">class(hydro)
@@ -1299,7 +1301,7 @@ class(iris)
 </slide>
 <slide class="" id="slide-50" style="background:;">
   <hgroup>
-    <h2>Check von leeren Felder</h2>
+    <h2>Überprüfung von leeren Feldern</h2>
   </hgroup>
   <article data-timings="">
     <pre><code class="r">hydro[127:136, ]
@@ -1337,7 +1339,7 @@ class(iris)
 </slide>
 <slide class="" id="slide-51" style="background:;">
   <hgroup>
-    <h2>Check der Datentypen</h2>
+    <h2>Überprüfung der Datentypen</h2>
   </hgroup>
   <article data-timings="">
     <pre><code class="r"># str(hydro) 
@@ -1377,7 +1379,7 @@ glimpse(hydro)
     <h2>Ändere die Spaltennamen</h2>
   </hgroup>
   <article data-timings="">
-    <p>Um das subsetten und spätere Manipulieren der Daten zu vereinfachen nutze kurze Namen:</p>
+    <p>Um das spätere Manipulieren der Daten zu vereinfachen, nutze kurze Namen:</p>
 
 <pre><code class="r">names(hydro) &lt;- c(&quot;cruise&quot;, &quot;station&quot;, &quot;type&quot;, &quot;date_time&quot;,
   &quot;lat&quot;, &quot;long&quot;, &quot;depth&quot;, &quot;pres&quot;, &quot;temp&quot;, &quot;psal&quot;, &quot;doxy&quot;)
@@ -1397,7 +1399,7 @@ glimpse(hydro)
 </slide>
 <slide class="segue" style="background:#1874CD;">
   <hgroup>
-    <h1>Daten speicher und exportieren</h1>
+    <h1>Daten speichern und exportieren</h1>
   </hgroup>
   <article>
     
@@ -1408,7 +1410,7 @@ glimpse(hydro)
     <h2>Daten als R Objekte speichern</h2>
   </hgroup>
   <article data-timings="">
-    <p>Du kannst Dein tibble oder data frame als <code>.R</code> Objekt abspeichern und jederzeit später wieder laden mi <code>save(your_tibble, &quot;filename&quot;)</code> und <code>load(&quot;filename&quot;)</code>:</p>
+    <p>Du kannst Dein tibble oder data frame als <code>.R</code> Objekt abspeichern und jederzeit wieder laden mit <code>save(your_tibble, &quot;filename&quot;)</code> und <code>load(&quot;filename&quot;)</code>:</p>
 
 <pre><code class="r">save(hydro, file = &quot;Mein_erstes_Objekt.R&quot;)
 # Wir löschen hydro aus der globalen Umgebung
@@ -1436,14 +1438,14 @@ hydro # jetzt sollte es wieder da sein
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Wenn Du Deine Daten expoertieren willst um sie dann mit anderen Programmen zu bearbeiten verwende am besten das gleiche Format wie beim Import.</li>
+<li>Wenn Du Deine Daten exportieren willst um sie dann mit anderen Programmen zu bearbeiten, verwende am besten das gleiche Format wie beim Import.</li>
 <li>Die meisten Importfunktionen haben ein Äquivalent zum Exportieren:
 
 <ul>
 <li><code>read_delim()</code> --&gt; <strong><code>write_delim()</code></strong></li>
 <li><code>read_csv()</code> --&gt; <strong><code>write_csv()</code></strong></li>
 <li><code>read_tsv()</code> --&gt; <strong><code>write_tsv()</code></strong></li>
-<li>other functions: <strong><code>write_excel_csv()</code></strong></li>
+<li>andere Funktionen: <strong><code>write_excel_csv()</code></strong></li>
 </ul></li>
 </ul>
 
@@ -1500,7 +1502,7 @@ hydro # jetzt sollte es wieder da sein
     <h2>Total konfus?</h2>
   </hgroup>
   <article class = 'flexbox vcenter'>
-    <p><img src="img/Comic_confused.png" title="plot of chunk unnamed-chunk-35" alt="plot of chunk unnamed-chunk-35" width="400px" style="display: block; margin: auto;" /></p>
+    <p><img src="img/Comic_confused.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="400px" style="display: block; margin: auto;" /></p>
 
 <p>Lese nach im Kapitel <a href="https://r4ds.had.co.nz/tibbles.html">10 Tibbles</a> und <a href="https://r4ds.had.co.nz/data-import.html">11 Data import</a> in &#39;R for Data Science&#39;.</p>
 
@@ -1521,7 +1523,7 @@ hydro # jetzt sollte es wieder da sein
     <h2>Total gelangweilt?</h2>
   </hgroup>
   <article class = 'flexbox vcenter'>
-    <p><img src="img/Comic_bored.png" title="plot of chunk unnamed-chunk-36" alt="plot of chunk unnamed-chunk-36" width="800px" style="display: block; margin: auto auto auto 0;" /></p>
+    <p><img src="img/Comic_bored.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="800px" style="display: block; margin: auto auto auto 0;" /></p>
 
 <p>Dann probiere mal eigene Daten zu importieren und in R zu explorieren.</p>
 
@@ -1544,7 +1546,7 @@ hydro # jetzt sollte es wieder da sein
   <article data-timings="">
     <p>Dann hol Dir einen Kaffee, lehn Dich zurück und genieße den Rest des Tages...!</p>
 
-<p><img src="img/Comic_hammock.png" title="plot of chunk unnamed-chunk-37" alt="plot of chunk unnamed-chunk-37" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="img/Comic_hammock.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="600px" style="display: block; margin: auto;" /></p>
 
     <footer>
       <div style="position: absolute; left: 60px; top: 645px; z-index:100">
@@ -1610,7 +1612,7 @@ hydro # jetzt sollte es wieder da sein
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Data wrangling is'>
+        data-slide=3 title='Data wrangling ist'>
          3
       </a>
     </li>
@@ -1700,7 +1702,7 @@ hydro # jetzt sollte es wieder da sein
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Quiz 1: Function conflicts'>
+        data-slide=18 title='Quiz 1: Funktionskonflikte'>
          18
       </a>
     </li>
@@ -1772,7 +1774,7 @@ hydro # jetzt sollte es wieder da sein
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Was sind eigentlich <strong>tibbles</strong>?'>
+        data-slide=30 title='tibbles erstellen'>
          30
       </a>
     </li>
@@ -1784,13 +1786,13 @@ hydro # jetzt sollte es wieder da sein
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='tibbles erstellen'>
+        data-slide=32 title='tibbles erstellen (Forts.)'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='tibbles erstellen (Forts.)'>
+        data-slide=33 title='Printen von tibbles'>
          33
       </a>
     </li>
@@ -1802,31 +1804,31 @@ hydro # jetzt sollte es wieder da sein
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Printen von tibbles'>
+        data-slide=35 title='Überblick an weiteren Funktionen:'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='Überblick an weiteren Funktionen:'>
+        data-slide=36 title='Andere Datentypen'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Andere Datentypen'>
+        data-slide=37 title='Roadmap'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Roadmap'>
+        data-slide=38 title='Reale Daten zum Importieren'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='Reale Daten zum Importieren'>
+        data-slide=39 title='NA'>
          39
       </a>
     </li>
@@ -1850,13 +1852,13 @@ hydro # jetzt sollte es wieder da sein
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=43 title='NA'>
+        data-slide=43 title='Aufgabe'>
          43
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=44 title='Aufgabe'>
+        data-slide=44 title='Import der ICES Daten'>
          44
       </a>
     </li>
@@ -1886,19 +1888,19 @@ hydro # jetzt sollte es wieder da sein
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=49 title='Check der Struktur'>
+        data-slide=49 title='Überprüfe die Struktur'>
          49
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=50 title='Check von leeren Felder'>
+        data-slide=50 title='Überprüfung von leeren Feldern'>
          50
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=51 title='Check der Datentypen'>
+        data-slide=51 title='Überprüfung der Datentypen'>
          51
       </a>
     </li>
@@ -1910,7 +1912,7 @@ hydro # jetzt sollte es wieder da sein
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=53 title='Daten speicher und exportieren'>
+        data-slide=53 title='Daten speichern und exportieren'>
          53
       </a>
     </li>
